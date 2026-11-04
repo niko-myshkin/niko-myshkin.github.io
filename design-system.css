@@ -14,7 +14,6 @@
   --color-text-secondary: #6c6c70;
   --color-surface-page: #f5f3ef;
   --color-focus: #4058cf;
-  --color-cursor-ink: #fff;
   --color-hairline: color-mix(in srgb, var(--color-text-secondary) 30%, transparent);
   --color-project-base: #111;
   --color-brand-atlas: #EAB949;
@@ -166,8 +165,6 @@
   /* Mobile explorer card: the neighbours peek in by this much on each side. */
   --control-carousel-inset: 40px;
   --icon-size: 16px;
-  --cursor-size: 42px;
-  --cursor-case-width: 180px;
 
   /* Motion */
   --duration-fast: 120ms;

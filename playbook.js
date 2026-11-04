@@ -15,7 +15,7 @@
     { id: 'type',   title: 'Typography', prefixes: ['--text-', '--font-', '--line-height-', '--letter-spacing-'], render: renderType },
     { id: 'space',  title: 'Spacing',    prefixes: ['--space-'], render: renderSpace },
     { id: 'layout', title: 'Layout',     prefixes: ['--layout-', '--content-', '--case-', '--project-', '--avatar-'], render: renderPlain },
-    { id: 'shape',  title: 'Shape',      prefixes: ['--radius-', '--border-', '--focus-', '--control-', '--icon-', '--cursor-', '--device-', '--flow-'], render: renderShape },
+    { id: 'shape',  title: 'Shape',      prefixes: ['--radius-', '--border-', '--focus-', '--control-', '--icon-', '--device-', '--flow-'], render: renderShape },
     { id: 'motion', title: 'Motion',     prefixes: ['--duration-', '--ease-', '--scroll-', '--reveal-', '--parallax-'], render: renderMotion },
     { id: 'other',  title: 'Other',      prefixes: [], render: renderPlain },
   ];

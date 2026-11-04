@@ -4,7 +4,6 @@ document.querySelectorAll('.profile-footer-link[aria-disabled="true"]').forEach(
 
 const contactDialog = document.querySelector("[data-contact-dialog]");
 if (contactDialog) {
-  const contactCursor = document.querySelector(".site-cursor");
   const emailButton = contactDialog.querySelector("[data-copy-email]");
   const copyStatus = contactDialog.querySelector("[data-copy-status]");
   let copyResetTimer;
@@ -49,13 +48,9 @@ if (contactDialog) {
   }
   document.querySelectorAll("[data-contact-open]").forEach((button) => {
     button.addEventListener("click", () => {
-      if (contactCursor) contactDialog.append(contactCursor);
       contactDialog.showModal();
       contactDialog.focus({ preventScroll: true });
     });
-  });
-  contactDialog.addEventListener("close", () => {
-    if (contactCursor) document.body.append(contactCursor);
   });
   contactDialog.querySelector("[data-contact-close]").addEventListener("click", () => contactDialog.close());
   contactDialog.addEventListener("click", (event) => {
