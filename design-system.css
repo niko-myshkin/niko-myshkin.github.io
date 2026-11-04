@@ -17,6 +17,7 @@
   --color-hairline: color-mix(in srgb, var(--color-text-secondary) 30%, transparent);
   --color-project-base: #111;
   --color-brand-atlas: #EAB949;
+  --color-brand-halo: #bc4e14; /* orange of the profile photo halo; social banners */
   --gradient-project-paper: linear-gradient(158deg, #ece4d4 0%, #bdc8a8 34%, #8ca8a6 66%, #ce9a7f 100%);
   /* Raised surface — a pill or card one step off the page, in either theme. */
   --color-surface-raised: color-mix(in srgb, var(--color-text-primary) 9%, var(--color-surface-page));

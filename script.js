@@ -292,6 +292,22 @@ if (projects.length) {
 
   setScrollFallback(animateProjectSnap);
 
+  /* Just enough room under the feed for the last card to settle at the top like the others,
+     and not a pixel more (a fixed 50vh left an empty half-screen). Desktop only: mobile does not settle. */
+  const feed = document.querySelector(".work");
+  const lastProject = projects[projects.length - 1];
+  const syncFeedEnd = () => {
+    if (!feed || !lastProject) return;
+    if (!desktopProjects.matches) { feed.style.removeProperty("--feed-end-space"); return; }
+    const topOffset = parseFloat(rootStyles.getPropertyValue("--space-8")) || 32;
+    const room = Math.max(topOffset, Math.ceil(window.innerHeight - topOffset - lastProject.getBoundingClientRect().height));
+    feed.style.setProperty("--feed-end-space", `${room}px`);
+  };
+  syncFeedEnd();
+  window.addEventListener("resize", syncFeedEnd, { passive: true });
+  desktopProjects.addEventListener("change", syncFeedEnd);
+  if ("ResizeObserver" in window && lastProject) new ResizeObserver(syncFeedEnd).observe(lastProject);
+
   const settleNearestProject = () => {
     if (!desktopProjects.matches || reducedMotion.matches) return;
 
