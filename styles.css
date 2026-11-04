@@ -17,7 +17,7 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
 .profile-footer { width: 100%; margin-top: auto; padding-top: var(--space-8); }
 .profile-footer-links { display: grid; width: 100%; grid-template-columns: repeat(6, max-content); justify-content: space-between; }
 
-.work { min-width: 0; padding: var(--space-8) 0 50vh; }
+.work { min-width: 0; padding: var(--space-8) 0; }
 .project-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--project-stack-gap); }
 .project { min-width: 0; width: 100%; scroll-margin-top: var(--space-8); }
 .project-art { position: relative; display: grid; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; place-items: center; border-radius: var(--radius-screen); user-select: none; }

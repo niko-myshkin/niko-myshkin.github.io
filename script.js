@@ -236,7 +236,7 @@ if (projects.length) {
         entry.target.classList.add("is-revealed");
         revealObserver.unobserve(entry.target);
       });
-    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+    }, { rootMargin: "0px", threshold: 0 }); // reveal as soon as any part is on screen: the second card peeks in on load
 
     projects.forEach((project) => revealObserver.observe(project));
   }
