@@ -1,0 +1,103 @@
+<!doctype html>
+<!-- Кейс ATLAS как питч продукта — концепт: 04_case-study/atlas-pitch-concept.md (2026-09-22).
+     Собирается по секции; case-atlas.html остаётся на главной, пока эта не готова.
+     Страница всегда тёмная: .ds-theme-dark на html, переключателя темы нет. -->
+<html lang="en" class="ds-theme-dark" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ATLAS: a music time machine that throws you into the sound of a place and an era. A product design case study by Nikolai Myshkin." />
+    <title>ATLAS · Nikolai Myshkin</title>
+    <link rel="stylesheet" href="design-system.css?v=20261031-3" />
+    <link rel="stylesheet" href="styles.css?v=20261031-3" />
+    <script src="phone-studio.js?v=20261031-3" defer></script>
+    <script src="script.js?v=20261031-3" defer></script>
+  </head>
+  <body class="case-detail-body case-atlas-pitch-body">
+    <main class="case-detail" id="top">
+      <header class="case-detail-topbar">
+        <a class="ds-link case-back" href="index.html">← Back</a>
+      </header>
+
+      <section class="case-pitch-hero" aria-labelledby="atlas-pitch-title">
+        <p class="ds-overline">A playable concept by Nikolai Myshkin</p>
+        <h1 class="ds-heading-1" id="atlas-pitch-title">You don't pick music.<br />You get thrown.</h1>
+        <p class="case-lead">ATLAS is a music time machine that throws you into the sound of a place and an era.</p>
+        <div class="case-pitch-actions">
+          <a class="ds-button" href="atlas-app/index.html">Try it</a>
+          <span class="case-pitch-qr-note">QR for desktop visitors</span>
+        </div>
+      </section>
+
+      <section class="case-pitch-section" aria-labelledby="atlas-pitch-problem">
+        <p class="ds-overline">The premise</p>
+        <h2 class="ds-heading-2" id="atlas-pitch-problem">Another app asking what you want to hear?</h2>
+        <p class="case-lead">Choosing is work. ATLAS starts with a place and an era, then lets the music find you.</p>
+      </section>
+
+      <section class="case-pitch-section" aria-labelledby="atlas-pitch-competition">
+        <p class="ds-overline">The space</p>
+        <h2 class="ds-heading-2" id="atlas-pitch-competition">Different tools. Different kinds of discovery.</h2>
+        <p class="case-detail-copy">Radiooooo, Every Noise, Spotify and ATLAS approach discovery from different directions. The comparison will make the product distinction explicit here.</p>
+      </section>
+
+      <!-- 4. Три жеста: выбранная плашка раскрывает объяснение и показывает один
+           статичный предметный кадр телефона с экраном живого прототипа ATLAS. -->
+      <section class="case-pitch-explorer">
+        <h2 class="ds-heading-2">Three moves. No need to choose.</h2>
+        <div class="ds-explorer case-pitch-explorer-stage" data-accordion data-accordion-explorer data-current="globe">
+          <button class="ds-explorer-close" type="button" data-explorer-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m7 7 10 10M17 7 7 17"/></svg></button>
+          <div class="ds-explorer-nav">
+            <div class="ds-explorer-steps">
+              <button class="ds-explorer-step" type="button" data-accordion-step="-1" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></button>
+              <button class="ds-explorer-step" type="button" data-accordion-step="1" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <ul class="ds-explorer-list">
+              <li class="ds-explorer-item">
+                <div class="ds-explorer-head-wrap"><button class="ds-explorer-head" type="button" aria-expanded="true" aria-controls="pitch-globe" data-accordion-head="globe"><svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7.5v9M7.5 12h9"/></svg>Spin the planet</button></div>
+                <div class="ds-accordion-panel" id="pitch-globe" tabindex="-1"><div><p><strong>Spin the planet and let go.</strong> It keeps turning, then a spring pulls the nearest city under the crosshair — carrying your finger's speed, so there's no seam between throw and landing.</p></div></div>
+              </li>
+              <li class="ds-explorer-item">
+                <div class="ds-explorer-head-wrap"><button class="ds-explorer-head" type="button" aria-expanded="false" aria-controls="pitch-dial" data-accordion-head="dial"><svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7.5v9M7.5 12h9"/></svg>Ten decades</button></div>
+                <div class="ds-accordion-panel" id="pitch-dial" tabindex="-1"><div><p><strong>Ten decades on a drum.</strong> The first version was a glass capsule, and people read it as a button. Now the whole drum is what you turn, and the year lights up as it slides under the glass.</p></div></div>
+              </li>
+              <li class="ds-explorer-item">
+                <div class="ds-explorer-head-wrap"><button class="ds-explorer-head" type="button" aria-expanded="false" aria-controls="pitch-throw" data-accordion-head="throw"><svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7.5v9M7.5 12h9"/></svg>A place &amp; era</button></div>
+                <div class="ds-accordion-panel" id="pitch-throw" tabindex="-1"><div><p><strong>A place &amp; era at once.</strong> Time always leads: every decade is reachable, and a city with nothing recorded then simply leaves the globe.</p></div></div>
+              </li>
+            </ul>
+          </div>
+          <figure class="ds-figure ds-explorer-media case-pitch-explorer-media">
+            <img class="case-pitch-explorer-shot is-current" src="atlas/pitch-phone-render.png?v=20261031-3" width="1254" height="1254" alt="ATLAS globe centred on Beirut, Lebanon, on a dark titanium phone" data-accordion-media="globe" />
+            <img class="case-pitch-explorer-shot" src="atlas/pitch-phone-render-kinshasa.png?v=20261031-3" width="1254" height="1254" alt="ATLAS decade dial set to the 1970s in Kinshasa, DR Congo, on a dark titanium phone" data-accordion-media="dial" />
+            <img class="case-pitch-explorer-shot" src="atlas/pitch-explorer-globe.png?v=20261031-3" width="1254" height="1254" alt="ATLAS globe showing Bangkok, Thailand in the 1970s" data-accordion-media="throw" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-pitch-section" aria-labelledby="atlas-pitch-loop">
+        <p class="ds-overline">The loop</p>
+        <h2 class="ds-heading-2" id="atlas-pitch-loop">A find becomes a reason to come back.</h2>
+        <p class="case-detail-copy">Throw → listen → refine → like → return. This section will show the real product loop with ATLAS screens.</p>
+      </section>
+
+      <section class="case-pitch-section" aria-labelledby="atlas-pitch-fit">
+        <p class="ds-overline">Why it fits</p>
+        <h2 class="ds-heading-2" id="atlas-pitch-fit">The gesture is ours. The catalog is theirs.</h2>
+        <p class="case-detail-copy">ATLAS combines a playful discovery mechanic with the depth of a streaming service.</p>
+      </section>
+
+      <section class="case-pitch-section" aria-labelledby="atlas-pitch-built">
+        <p class="ds-overline">How it’s made</p>
+        <h2 class="ds-heading-2" id="atlas-pitch-built">A system built around motion, sound and place.</h2>
+        <p class="case-detail-copy">Design system, 3D globe, physical controls and one shared core across mobile and desktop.</p>
+      </section>
+
+      <section class="case-pitch-section case-pitch-finale" aria-labelledby="atlas-pitch-finale">
+        <p class="ds-overline">Play the concept</p>
+        <h2 class="ds-heading-2" id="atlas-pitch-finale">Ready to get thrown?</h2>
+        <a class="ds-button" href="atlas-app/index.html">Try ATLAS</a>
+      </section>
+    </main>
+  </body>
+</html>

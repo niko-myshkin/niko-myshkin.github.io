@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ATLAS: a music time machine that throws you into the sound of a place and an era. A product design case study by Nikolai Myshkin." />
+    <title>ATLAS · snapshot 2026-09-25 · Nikolai Myshkin</title>
+    <link rel="stylesheet" href="design-system.css?v=20261031-3" />
+    <link rel="stylesheet" href="styles.css?v=20261031-3" />
+    <script src="script.js?v=20261031-3" defer></script>
+  </head>
+  <body class="case-detail-body" data-case-reveal>
+    <main class="case-detail" id="top">
+      <header class="case-detail-topbar">
+        <a class="ds-link case-back" href="index.html">← Back</a>
+      </header>
+
+      <section class="case-hero">
+        <div class="case-detail-copy case-hero-copy">
+          <h1><span class="case-hero-brand">ATLAS:</span><br />Space Time Music Machine</h1>
+          <p>ATLAS is a mobile app where you don't pick music. You get thrown into it. The
+            globe sets the place, the year dial sets the time, and the throw drops you into a
+            random point in the world and a random era.</p>
+          <p>My role: product and interaction design end to end, and a working prototype
+            built with AI coding agents.</p>
+          <p class="case-actions">
+            <a class="ds-button ds-button--pill" href="atlas-app/index.html" target="_blank" rel="noopener">Try App</a>
+          </p>
+        </div>
+        <figure class="ds-figure case-hero-media">
+          <div class="ds-device">
+            <div class="ds-embed" data-embed>
+              <iframe src="atlas-app/index.html?inset=44" title="ATLAS prototype" allow="autoplay"></iframe>
+            </div>
+            <div class="ds-device-status" aria-hidden="true">
+              <span data-device-clock>9:41</span>
+              <span class="ds-device-status-right">
+                <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8.5" width="3" height="3.5" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 4.2a10 10 0 0 1 14 0"/><path d="M3.6 7a6.4 6.4 0 0 1 8.8 0"/><path d="M6.2 9.7a2.7 2.7 0 0 1 3.6 0"/></svg>
+                <svg viewBox="0 0 26 12" fill="none"><rect x=".6" y=".6" width="21" height="10.8" rx="3.2" stroke="currentColor" stroke-opacity=".45" stroke-width="1.1"/><rect x="2.2" y="2.2" width="14" height="7.6" rx="2" fill="currentColor"/><path d="M23.4 4.2v3.6a2.3 2.3 0 0 0 0-3.6z" fill="currentColor" fill-opacity=".45"/></svg>
+              </span>
+            </div>
+            <span class="ds-device-island" aria-hidden="true"></span>
+          </div>
+        </figure>
+      </section>
+
+      <section class="case-detail-copy case-detail-copy--section case-statement-sec">
+        <h2 class="ds-heading-2 ds-statement" data-statement><span class="case-statement-line">Another app asking</span><span class="case-statement-line">what you want to hear?</span><span class="case-statement-line">Choosing is work.</span><span class="case-statement-line case-statement-accent">ATLAS never asks.</span></h2>
+      </section>
+
+      <div class="case-detail-media case-mechanics">
+        <iframe src="atlas-app/index.html?view=mechanics" title="Interactive ATLAS mechanics: globe, era dial and throw" loading="lazy"></iframe>
+      </div>
+
+      <section class="case-detail-copy case-detail-copy--section case-screens-heading">
+        <h2>Every screen</h2>
+      </section>
+      <div class="case-detail-media ds-media-grid case-screen-gallery">
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/01-main.webp" alt="Main screen" width="750" height="1624" decoding="async" />
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/08-track.webp" alt="Track screen" width="750" height="1624" decoding="async" />
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/11-signin.webp" alt="Sign-in sheet" width="750" height="1624" decoding="async" />
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/12-signup.webp" alt="Create account" width="750" height="1624" decoding="async" />
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/07-liked.webp" alt="Liked finds" width="750" height="1624" decoding="async" />
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/09-stats.webp" alt="Listening stats" width="750" height="1624" decoding="async" />
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/10-profile.webp" alt="Profile" width="750" height="1624" decoding="async" />
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/14-rowmenu.webp" alt="Row actions" width="750" height="1624" decoding="async" />
+        </figure>
+      </div>
+
+      <section class="case-detail-copy case-detail-copy--section" lang="ru">
+        <h2>Время ведёт, места уступают</h2>
+        <p>Самое трудное решение проекта. Первая версия фильтровала в обе стороны: выбираешь город — и годы, где у него нет музыки, гаснут. Это читалось так, будто продукт с тобой спорит.</p>
+        <p>Теперь шкала крутится всегда, а город, которому в этой декаде нечего играть, уходит с глобуса — и планета доворачивает к ближайшему живому. Мир перестраивается под время, а не наоборот.</p>
+      </section>
+      <div class="case-detail-media case-pair case-pair--screens ds-media-grid" lang="ru">
+          <figure class="ds-figure"><img class="ds-screen" src="atlas/06a-era-1970.webp" alt="Кингстон в 1970-е" width="750" height="1624" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">Кингстон, 1970-е: Карибы густые.</figcaption></figure>
+          <figure class="ds-figure"><img class="ds-screen" src="atlas/06b-era-2010.webp" alt="Кингстон в 2010-е" width="750" height="1624" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">Тот же город, 2010-е: половина мира ушла с глобуса, а шкала крутится.</figcaption></figure>
+      </div>
+
+      <section class="case-detail-copy case-detail-copy--section" lang="ru">
+        <h2>Шкалу прочитали как кнопку</h2>
+        <p>Интервью не было, но был первый человек, увидевший экран со стороны. Он принял шкалу лет за кнопку: стеклянная капсула была ровно по размеру одного года, а выделенный элемент читается кнопкой.</p>
+        <p>Капсулу заменил барабан: корпус охватывает весь механизм, годы едут внутри, и шкалу хочется крутить.</p>
+      </section>
+      <div class="case-detail-media case-pair ds-media-grid" lang="ru">
+          <figure class="ds-figure"><img class="ds-screen" src="atlas/dial-before.webp" alt="Шкала лет со стеклянной капсулой на одном годе" width="1125" height="420" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">До: капсула ровно по размеру одного года.</figcaption></figure>
+          <figure class="ds-figure"><img class="ds-screen" src="atlas/dial-after.webp" alt="Шкала лет барабаном во всю строку" width="1125" height="420" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">После: барабан во всю строку, годы едут внутри.</figcaption></figure>
+      </div>
+
+      <section class="case-detail-copy case-detail-copy--section">
+        <p class="ds-label" lang="ru">FAQ</p>
+        <h2 lang="ru">Вопросы, которые стоит задать</h2>
+      </section>
+      <div class="case-faq ds-accordion ds-accordion--list" lang="ru" data-accordion data-accordion-multi>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-1" data-accordion-head="1">Какую задачу решает ATLAS?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-1"><div><p>Провалиться в музыку другого места и времени, ничего не выбирая. Идея есть у Radiooooo, но там клик по стране добавляет её в маршрут вместо того, чтобы играть. Отсюда бриф: одно касание — и уже играет.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-2" data-accordion-head="2">Почему нельзя выбрать жанр?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-2"><div><p>Выбор — это работа, и с него начинается любое другое приложение. Здесь место задаёт глобус, время — шкала лет, а жанр — просто то, что ты нашёл.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-3" data-accordion-head="3">Как устроен сценарий?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-3"><div><p>Экран один, а всё остальное открывается поверх и сценарий не рвёт. Держит его петля: находки складываются в карту, а карта — причина вернуться.</p><figure class="ds-figure ds-flow"><ol class="ds-flow-steps"><li class="ds-flow-step"><span class="ds-flow-num">01</span><span class="ds-flow-title">Заброс</span><span class="ds-flow-note">одно касание</span></li><li class="ds-flow-step"><span class="ds-flow-num">02</span><span class="ds-flow-title">Играет</span><span class="ds-flow-note">место и эпоха уже выбраны</span></li><li class="ds-flow-step"><span class="ds-flow-num">03</span><span class="ds-flow-title">Уточняешь</span><span class="ds-flow-note">глобус и шкала лет</span></li><li class="ds-flow-step"><span class="ds-flow-num">04</span><span class="ds-flow-title">Сохраняешь</span><span class="ds-flow-note">♥ на находке</span></li><li class="ds-flow-step"><span class="ds-flow-num">05</span><span class="ds-flow-title">Карта</span><span class="ds-flow-note">находки складываются в мир</span></li></ol><div class="ds-flow-loop"><span>карта — причина вернуться к забросу</span></div></figure></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-13" data-accordion-head="13">Зачем вход, если у прототипа нет бэкенда?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-13"><div><p>Профиль — это место, где лежат находки. Гость ничего не копит: ♥ и кнопка списка у него поднимают окно входа. После входа выполняется то, ради чего человек пришёл, — находка, из-за которой он нажал ♥, уже в списке.</p><figure class="ds-figure ds-flow" style="--ds-flow-steps: 4"><ol class="ds-flow-steps"><li class="ds-flow-step"><span class="ds-flow-num">01</span><span class="ds-flow-title">♥ у гостя</span><span class="ds-flow-note">находка ещё не сохраняется</span></li><li class="ds-flow-step"><span class="ds-flow-num">02</span><span class="ds-flow-title">Окно входа</span><span class="ds-flow-note">одно поле — почта</span></li><li class="ds-flow-step"><span class="ds-flow-num">03</span><span class="ds-flow-title">Вход</span><span class="ds-flow-note">любая почта, всё на телефоне</span></li><li class="ds-flow-step"><span class="ds-flow-num">04</span><span class="ds-flow-title">Находка на месте</span><span class="ds-flow-note">та, ради которой входили</span></li></ol></figure><p>Бэкенда нет: профиль живёт на телефоне, почта подойдёт любая. Чтобы экраны находок и статистики не были пустыми, вход подтягивает демо-карту находок — как будто профиль уже был.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-5" data-accordion-head="5">Почему глобус и шкала ощущаются тяжёлыми?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-5"><div><p>Инерция и пружина, которая забирает скорость пальца, — между броском и посадкой нет шва. К тому, что хочется трогать, возвращаются.</p><figure class="ds-figure"><video class="ds-screen" src="atlas/04-inertia.mp4" muted loop playsinline preload="none" poster="atlas/01-main.webp" width="750" height="1624"></video><figcaption class="ds-figure-caption">Отпустил над Тихим океаном — планета докручивается сама и садится на Мумбаи, трек меняется вместе с ней.</figcaption></figure></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-6" data-accordion-head="6">Как устроена дизайн-система?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-6"><div><p>На двух уровнях. Структура: одна шапка, одна верхняя линия и один ряд управления на всех экранах. Элементы: только токены канона — аудит нашёл 13 разных кеглей и три разных play, остались шкала и один play.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-7" data-accordion-head="7">Как продукт растёт?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-7"><div><p>Каталог вырос с 13 городов до 43 и с 94 треков до 552, а интерфейс не перестраивали. Десктоп собран на том же ядре: каталог, физика шкалы и звук — из общего кода, а знак заброса и 3D-глобус пока продублированы и следующие на вынос.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-8" data-accordion-head="8">Как понять, что это работает?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-8"><div><p>Пользователей у прототипа нет, поэтому опора — проверяемые факты: у всех 552 треков есть звук, а каждая из 246 пустых пар «место × эпоха» проверена — везде место уступает ближайшему живому, тишины нет. После запуска главная метрика — возвращаемость.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-12" data-accordion-head="12">Кто за это платит?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-12"><div><p>Отдельным приложением ATLAS упирается в лицензии: чтобы играть полные треки, нужны права на каталог. Поэтому реалистичная модель — не своё приложение, а механика внутри стримингового сервиса: «Каталог ваш. Дверь наша». Сервис уже платит за музыку, а получает новый повод её открыть — и та же главная метрика, возвращаемость.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-9" data-accordion-head="9">Что вырезано?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-9"><div><p>«Честная тишина» — правило времени сделало её недостижимой. Кость — у заброса нет результата, который она показывала бы. Персоны — без интервью это утверждение о людях, которых не видел.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-10" data-accordion-head="10">Как шла работа?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-10"><div><p>Сначала код: прототип — источник правды, Figma догоняет. Код писали Claude Code и Codex, задачи и приёмка по замерам — мои. Каждое решение записано в журнал: 2500 строк и 54 снапшота.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-11" data-accordion-head="11">Что дальше?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-11"><div><p>Довести десктоп: правая панель пока заглушка, а знак заброса и 3D-глобус — вынести в общее ядро. Потом натив — ради настоящей хаптики, которой нет в iOS Safari.</p></div></div>
+        </div>
+      </div>
+
+      <section class="case-detail-copy case-detail-copy--section">
+        <p class="ds-label">A concept, built and playable. Forty-three cities, ten decades,
+          552 tracks: a mock catalogue with real artists, no backend, no licence to stream.
+          The research is a hypothesis, and this page says so rather than dressing it up.</p>
+        <p class="case-cta"><a class="ds-button ds-button--pill" href="atlas-app/index.html" target="_blank" rel="noreferrer">Open the prototype ↗</a></p>
+      </section>
+    </main>
+  </body>
+</html>

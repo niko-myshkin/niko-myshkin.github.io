@@ -1,0 +1,474 @@
+.layout { display: grid; grid-template-columns: var(--layout-columns); gap: var(--layout-column-gap); width: 100%; max-width: var(--layout-max-width); min-height: 100vh; margin: 0 auto; padding: 0 var(--layout-page-gutter); }
+.profile { position: sticky; top: 0; display: flex; height: 100vh; flex-direction: column; padding: var(--space-8) 0 var(--space-8); }
+.profile-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-6); }
+.profile-identity { position: relative; min-width: 0; padding-top: var(--avatar-height); }
+.monogram { position: relative; display: block; width: var(--avatar-width); height: var(--avatar-height); overflow: hidden; -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 42%, #000 36%, #000c 54%, transparent 78%); mask-image: radial-gradient(ellipse 72% 68% at 50% 42%, #000 36%, #000c 54%, transparent 78%); text-decoration: none; }
+.avatar { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; pointer-events: none; }
+.monogram--halo { -webkit-mask-image: none; mask-image: none; }
+.monogram--halo .avatar { object-fit: contain; }
+.profile-identity .monogram { position: absolute; top: 0; left: 50%; translate: -50% 0; }
+.profile-name, .project-meta h2 { max-width: var(--content-heading-max-width); font-size: var(--font-size-card-title); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-heading); }
+.profile-name { margin: var(--space-4) 0 0; color: var(--color-text-secondary); font-size: var(--font-size-profile-name); line-height: var(--line-height-button); }
+.profile-copy { margin-top: var(--space-20); }
+h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-text-primary); font-size: var(--font-size-display); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-tight); }
+.intro { max-width: var(--content-intro-max-width); margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }
+.profile-copy .intro { margin-top: var(--space-4); }
+.contact { margin-top: var(--space-12); }
+.profile-footer { width: 100%; margin-top: auto; padding-top: var(--space-8); }
+.profile-footer-links { display: grid; width: 100%; grid-template-columns: repeat(6, max-content); justify-content: space-between; }
+
+.work { min-width: 0; padding: var(--space-8) 0 50vh; }
+.project-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--project-stack-gap); }
+.project { min-width: 0; width: 100%; scroll-margin-top: var(--space-8); }
+.project-art { position: relative; display: grid; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; place-items: center; border-radius: var(--radius-screen); user-select: none; }
+.project:first-child .project-art:not(.project-art--wide) { height: var(--project-art-height); }
+.project-art--wide { aspect-ratio: 16 / 9; }
+.project[data-case-url] .project-art { cursor: pointer; }
+.project-cover { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-art--image { transform: perspective(var(--project-tilt-perspective)) rotateX(var(--project-tilt-x, 0deg)) rotateY(var(--project-tilt-y, 0deg)); }
+}
+.project-meta { padding-top: var(--space-4); user-select: text; }
+.project-meta p { margin: 0; }
+.project-meta h2 { margin: 0 0 var(--space-3); }
+.project-meta p:last-child { max-width: var(--content-body-max-width); color: var(--color-text-secondary); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }
+.case-cursor { position: fixed; top: 0; left: 0; z-index: 1000; display: none; width: var(--cursor-size); height: var(--cursor-size); align-items: center; justify-content: center; overflow: hidden; border: var(--border-width) solid var(--color-cursor-ink); border-radius: var(--radius-pill); background: transparent; color: var(--color-cursor-ink); font-family: var(--font-family-sans); font-size: var(--font-size-button); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-button); mix-blend-mode: difference; opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); transition: width var(--duration-medium) var(--ease-out), height var(--duration-medium) var(--ease-out), opacity var(--duration-fast) var(--ease-standard); white-space: nowrap; }
+.ds-contact-dialog .case-cursor { mix-blend-mode: normal; }
+.case-cursor span { opacity: 0; transform: translateY(var(--space-1)); transition: opacity 100ms var(--ease-standard), transform 160ms var(--ease-standard); }
+.case-cursor.is-visible { opacity: 1; }
+.case-cursor.is-case { width: var(--cursor-case-width); height: var(--control-cta-height); }
+.case-cursor.is-case span { opacity: 1; transform: translateY(var(--control-label-optical-shift)); transition-delay: 70ms; }
+
+.project--lavender .project-art { background: var(--color-project-base); }
+.project--paper .project-art { background: var(--gradient-project-paper); }
+.project--ink .project-art { background: var(--gradient-project-ink); }
+:root[data-theme="dark"] .project-art:not(.project-art--image) { filter: saturate(.88) brightness(.78); }
+
+.case-detail { display: grid; width: 100%; max-width: var(--layout-max-width); min-height: 100vh; margin: 0 auto; padding: var(--space-8) var(--layout-page-gutter) var(--space-30); grid-template-columns: minmax(0, 1fr); }
+.case-detail-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--case-topbar-gap); }
+.case-detail-copy { align-self: start; }
+.case-detail-copy h1, .case-detail-copy h2 { max-width: var(--case-heading-max-width); margin: 0 0 var(--case-heading-gap); color: var(--color-text-primary); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-case); line-height: var(--line-height-tight); }
+.case-detail-copy h1 { font-size: var(--font-size-case-h1); }
+.case-detail-copy h2 { font-size: var(--font-size-case-h2); }
+.case-detail-copy p { max-width: var(--content-body-max-width); margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }
+.case-detail-media { margin: var(--case-media-gap) 0 0; }
+/* Match the embedded document's default scheme so Chromium keeps its canvas transparent in dark mode. */
+.case-mechanics iframe { display: block; width: 100%; height: var(--case-mechanics-height); border: 0; background: transparent; color-scheme: normal; }
+.case-detail-copy--section { margin-top: var(--case-section-gap); }
+.case-detail-copy > * + * { margin-top: var(--case-para-gap); }
+/* Утверждение шире обычного заголовка: это текст целого блока, а не строка-титул. */
+.case-detail-copy .ds-heading-3 { font-size: var(--font-size-case-h3); line-height: var(--line-height-heading); }
+.case-detail-copy .ds-heading-1 { font-size: var(--font-size-case-h1); line-height: var(--line-height-tight); }
+/* Утверждение стоит по центру полосы: это не заголовок раздела, а сам блок. */
+.case-statement-sec { text-align: center; }
+.case-statement-sec .ds-statement { max-width: 100%; margin-inline: auto; margin-bottom: 0; }
+/* Утверждение — ровно посередине между hero и следующим блоком. Сверху зазор даёт hero
+   (--case-section-gap), собственный верхний отступ секции обнуляется: было 240 сверху
+   против 96 снизу. У заголовка нет нижнего отступа — под ним в этой секции ничего нет.
+   Снизу тот же --case-section-gap до видимого края карточек механик: их внутренний
+   отступ (--case-mechanics-inset) вычитается. */
+.case-hero + .case-statement-sec { margin-top: 0; }
+.case-statement-sec + .case-mechanics { margin-top: calc(var(--case-section-gap) - var(--case-mechanics-inset)); }
+.case-statement-line { display: block; }
+.case-screens-heading h2 { margin-inline: auto; text-align: center; }
+.case-try { margin-top: var(--case-section-gap); }
+/* FAQ по всей ширине полосы, но ответ держит длину строки заголовка — иначе на 1280 выходит строка в полторы сотни знаков. */
+.case-faq { margin-top: var(--case-media-gap); }
+.case-faq .ds-accordion-panel p { max-width: var(--case-heading-max-width); margin-bottom: var(--space-6); }
+/* Кадры в ответах — размером с телефон из галереи, а не во всю полосу. Схема сценария остаётся во всю ширину. */
+.case-faq .ds-accordion-panel > div > .ds-figure:not(.ds-flow) { max-width: var(--case-phone-width); }
+.case-faq .ds-accordion-panel .ds-media-grid { max-width: calc(var(--case-phone-width) * 2 + var(--case-grid-gap)); }
+/* Пары «было / стало» между галереей и FAQ — шириной в два телефона галереи, по центру. */
+.case-pair.ds-media-grid { max-width: calc(var(--case-screen-column) * 2 + var(--case-grid-gap)); margin-inline: auto; }
+/* Два экрана сравнивают рядом и на телефоне, как в галерее; вырезки шкалы там встают столбиком. */
+.case-pair--screens.ds-media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Метка над заголовком («FAQ»): правило h2 выше обнуляет его верхний отступ, и метка липла к заголовку. */
+.case-detail-copy > * + h2 { margin-top: var(--case-para-gap); }
+.case-statement-accent, .case-statement-accent .ds-statement-word.is-lit { color: var(--color-brand-atlas); }
+.case-detail-copy > h1 + *, .case-detail-copy > h2 + * { margin-top: 0; }
+.case-detail-copy > .case-actions { margin-top: var(--case-action-gap); }
+.case-detail-copy .case-para--lead { color: var(--color-text-primary); }
+.case-detail-copy .case-cta { margin-top: var(--space-6); }
+.case-contact { text-align: center; }
+.case-screen-ribbon { width: calc(100% + 2 * var(--layout-page-gutter)); margin-top: var(--case-section-gap); margin-left: calc(-1 * var(--layout-page-gutter)); }
+.case-contact h2, .case-contact .case-cta { margin-inline: auto; }
+.case-contact .case-return { display: flex; justify-content: center; max-width: none; margin: var(--space-20) auto 0; }
+/* A single phone frame is a tall object: at full column width it dwarfs the page.
+   Inside a grid it fills its cell, so the cap applies only to standalone figures. */
+.case-detail-media.ds-figure .ds-screen { max-width: 380px; margin-inline: auto; }
+.case-detail-media.ds-figure .ds-figure-caption { margin-inline: auto; text-align: center; }
+.ds-media-grid .ds-figure-caption { text-align: left; }
+.case-screen-gallery.ds-media-grid { width: 100%; max-width: calc(var(--case-screen-column) * 2 + var(--case-grid-gap)); margin-inline: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--case-grid-gap); }
+.case-screen-gallery > :nth-child(even) { position: relative; top: var(--screen-scroll-offset, var(--case-screen-offset)); }
+@media (prefers-reduced-motion: reduce) {
+  .case-screen-gallery > :nth-child(even) { top: 0; }
+}
+
+/* Hero: the copy and the live product stand side by side, the text block
+   vertically centred against the tall frame. */
+.case-hero { display: grid; align-items: center; margin-bottom: var(--case-section-gap); gap: var(--layout-column-gap); grid-template-columns: minmax(0, 1fr) minmax(0, 420px); }
+/* ⚠️ .case-detail-copy объявлен как align-self:start — без переопределения
+   центрирование контейнера до текста не доходит. */
+.case-hero-copy { align-self: center; }
+.case-hero-copy h1 { margin-bottom: var(--space-6); }
+.case-hero-media { margin: 0; }
+/* Рамка меряется от ВЫСОТЫ экрана, а не от ширины колонки: hero обязан
+   помещаться в первый экран целиком. 0.4618 — пропорция кадра 375/812;
+   220px — топбар, его отступ и поля страницы. svh, потому что на телефоне
+   адресная строка съедает часть vh. */
+.case-hero-media .ds-embed { max-width: var(--case-phone-width); margin-inline: auto; }
+
+.case-hero-brand { color: var(--color-brand-atlas); }
+
+/* Тач: прототип в хиро заперт, пока человек сам не тапнет. Иначе вертикальный
+   свайп по телефону уходит внутрь приложения (шторка плеера, шкала), а не листает
+   страницу. Мышь не затронута: щит показывается только при pointer: coarse. */
+.case-embed-shield, .case-embed-lock { display: none; }
+@media (pointer: coarse) {
+  .case-embed-shield { position: absolute; z-index: 2; inset: 0; display: grid; place-items: end center; padding: var(--space-6); border: 0; background: transparent; color: var(--color-text-primary); font: inherit; cursor: pointer; }
+  .case-embed-shield span, .case-embed-lock { padding: var(--space-3) var(--space-6); border: var(--border-width) solid var(--color-hairline); border-radius: var(--radius-pill); background: var(--color-surface-raised); color: var(--color-text-primary); font: inherit; font-size: var(--font-size-label); font-weight: var(--font-weight-heading); }
+  .case-embed-lock { margin: var(--space-4) auto 0; cursor: pointer; }
+  .case-hero-media.is-live .case-embed-shield { display: none; }
+  .case-hero-media.is-live .case-embed-lock { display: block; }
+}
+.case-embed-shield:focus-visible, .case-embed-lock:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+
+/* One object: первый экран и три жеста — одна липкая сцена с одним 3D-телефоном (case-atlas.html).
+   Секция высотой в шаги, внутри экран-«пин»: шапка, слева текст шага, справа телефон.
+   Текущий шаг выбирает script.js, позу и жест — tools/atlas-phone-motion.js. */
+.case-detail:has(> .case-one) { padding-top: 0; }
+/* Слой во всю ширину на полосу прокрутки шире страницы; clip, а не hidden — sticky остаётся живым. */
+.case-detail-body:has(.case-one) { overflow-x: clip; }
+.case-one { height: calc(var(--case-one-step-length) * var(--one-steps, 4)); margin-bottom: var(--case-section-gap); }
+.case-one-pin { position: sticky; top: 0; display: grid; height: 100svh; padding-top: var(--space-8); grid-template-rows: auto minmax(0, 1fr); }
+.case-one-pin .case-detail-topbar { margin-bottom: 0; }
+.case-one-stage { display: grid; min-height: 0; align-items: center; gap: var(--layout-column-gap); grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+/* Тексты шагов лежат в одной ячейке и идут лентой: прошедший (.is-past) уезжает вверх и гаснет,
+   следующий ждёт ниже и приходит снизу. Назад — зеркально, направление даёт сам класс. */
+.case-one-copy { display: grid; }
+.case-one-step { grid-area: 1 / 1; align-self: center; max-width: var(--content-body-max-width); opacity: 0; transform: translateY(var(--case-one-feed-shift));
+  transition: opacity var(--duration-medium) var(--ease-exit), transform var(--duration-medium) var(--ease-exit); }
+.case-one-step.is-past { transform: translateY(calc(-1 * var(--case-one-feed-shift))); }
+.case-one-step.is-current { opacity: 1; transform: none;
+  /* Новый абзац ждёт, пока старый уйдёт целиком: на быстром скролле два текста не накладываются. */
+  transition: opacity var(--duration-settle) var(--ease-reveal) var(--duration-medium), transform var(--duration-settle) var(--ease-reveal) var(--duration-medium); }
+.case-one-step h1 { margin-bottom: var(--space-6); }
+.case-one-kicker { margin: 0 0 var(--space-4); color: var(--color-brand-atlas); font-size: var(--font-size-label); font-weight: var(--font-weight-heading); }
+.case-one-title { margin: 0 0 var(--space-4); color: var(--color-text-primary); font-size: var(--font-size-card-title); font-weight: var(--font-weight-heading); }
+.case-one-step p:not([class]) { margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.case-one-step[data-one-step=""] p:not([class]) + p { margin-top: var(--case-para-gap); }
+.case-one-step strong { color: var(--color-text-primary); font-weight: var(--font-weight-heading); }
+/* Холст — слой на всю ширину экрана под текстом: крупные позы не режутся о край колонки.
+   Кадр ставится по пустому слоту в правой колонке (data-phone-slot). Клики проходят сквозь
+   холст к тексту; ловит их только живой экран телефона. */
+.case-one-media { --phone-scene-scale: var(--case-one-phone-scale); position: absolute; z-index: 0; inset-block: 0; left: calc(50% - 50vw); width: 100vw; margin: 0; }
+.case-one-media canvas { pointer-events: none; }
+/* Крупная поза гаснет к колонке текста, а не лезет под абзац. Край слота пишет сцена (--phone-slot-left). */
+.case-one-media { -webkit-mask-image: linear-gradient(to right, transparent calc(var(--phone-slot-left, 0px) - var(--layout-column-gap)), #000 var(--phone-slot-left, 0px));
+  mask-image: linear-gradient(to right, transparent calc(var(--phone-slot-left, 0px) - var(--layout-column-gap)), #000 var(--phone-slot-left, 0px)); }
+.case-one-pin .case-detail-topbar, .case-one-copy { position: relative; z-index: 1; }
+.case-one-slot { height: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .case-one-step, .case-one-step.is-current { transform: none; transition: none; }
+}
+.case-detail-image { display: block; width: 100%; height: auto; border-radius: var(--radius-media); }
+
+/* Design system playbook page.
+   The token cards are built by playbook.js; these are their clothes. */
+.pb-shell { display: grid; width: min(100%, var(--layout-max-width)); margin-inline: auto; padding-inline: var(--layout-page-gutter); gap: var(--layout-column-gap); grid-template-columns: var(--layout-rail-width) minmax(0, 1fr); align-items: start; }
+.pb-rail { position: sticky; top: 0; align-self: start; padding-block: var(--space-8); }
+.pb-rail-inner { display: grid; gap: var(--space-6); }
+.pb-nav { display: grid; gap: var(--space-2); }
+.pb-nav-link { color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: var(--line-height-body); text-decoration: none; transition: color var(--duration-normal) var(--ease-standard); }
+.pb-nav-link:hover, .pb-nav-link[aria-current] { color: var(--color-text-primary); }
+.pb-nav-link:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+.pb-rail-note { max-width: var(--layout-rail-width); }
+.pb-main { min-width: 0; }
+
+.ds-doc { width: 100%; padding-block: var(--space-8) var(--space-30); }
+.ds-doc-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-16); }
+.ds-doc-header { max-width: var(--content-heading-max-width); margin-bottom: var(--space-16); }
+.ds-doc-header .ds-body { max-width: var(--case-heading-max-width); margin-top: var(--space-6); }
+.ds-doc-section { padding: var(--space-16) 0; border-top: var(--border-width) solid color-mix(in srgb, var(--color-text-secondary) 35%, transparent); scroll-margin-top: var(--space-8); }
+.ds-doc-section-title { margin: 0; }
+.ds-doc-stack { display: grid; gap: var(--space-8); }
+.ds-doc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); }
+.ds-doc-media { width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius-media); background: var(--gradient-project-ink); }
+
+.pb-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-12); }
+.pb-block + .pb-block { margin-top: var(--space-16); }
+.pb-block-title { margin: 0 0 var(--space-6); }
+.pb-hint { margin: var(--space-4) 0 0; max-width: var(--content-body-max-width); }
+.pb-device-demo .ds-embed { width: calc(var(--layout-card-min) - var(--space-4)); }
+.pb-device-demo .ds-screen { border-radius: 0; }
+.pb-gradient { display: flex; align-items: flex-end; min-height: var(--space-30); padding: var(--space-4); border-radius: var(--radius-control); }
+.pb-gradient .ds-label { color: var(--color-project-base); }
+
+/* Token card. A button, because clicking it copies var(--name). */
+.pb-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(var(--layout-card-min), 1fr)); }
+.pb-card { position: relative; display: grid; align-content: start; gap: var(--space-3); padding: var(--space-4); border: var(--border-width) solid color-mix(in srgb, var(--color-text-secondary) 35%, transparent); border-radius: var(--radius-control); background: transparent; color: var(--color-text-primary); font-family: var(--font-family-sans); text-align: left; cursor: pointer; transition: border-color var(--duration-normal) var(--ease-standard); }
+.pb-card:hover { border-color: var(--color-text-secondary); }
+.pb-card:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+.pb-card::after { position: absolute; top: var(--space-3); right: var(--space-4); color: var(--color-text-secondary); font-size: var(--font-size-label); content: "copied"; opacity: 0; transition: opacity var(--duration-normal) var(--ease-standard); }
+.pb-card.is-copied::after { opacity: 1; }
+.pb-card-body { display: grid; gap: var(--space-1); min-width: 0; }
+.pb-card-name { font-size: var(--font-size-label); line-height: var(--line-height-body); overflow-wrap: anywhere; }
+.pb-card-layer { width: fit-content; padding: 0 var(--space-2); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--color-text-secondary) 22%, transparent); color: var(--color-text-primary); font-size: var(--font-size-label); line-height: 1.6; }
+.pb-card-value, .pb-card-meta { color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: var(--line-height-body); overflow-wrap: anywhere; }
+
+/* Card previews */
+.pb-swatch { display: block; height: var(--space-16); border: var(--border-width) solid color-mix(in srgb, var(--color-text-secondary) 35%, transparent); border-radius: var(--radius-control); }
+.pb-type-sample { display: block; overflow: hidden; color: var(--color-text-primary); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-tight); }
+.pb-type-sample--lines { white-space: pre-line; font-size: var(--font-size-body); letter-spacing: normal; }
+.pb-bar { display: block; width: var(--sample-space, 0); height: var(--space-2); max-width: 100%; border-radius: var(--radius-pill); background: var(--color-text-primary); }
+.pb-radius { display: block; width: var(--space-16); height: var(--space-16); border: var(--border-width) solid var(--color-text-secondary); }
+.pb-track { display: block; width: 100%; height: var(--space-2); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--color-text-secondary) 35%, transparent); }
+.pb-dot { display: block; width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--color-text-primary); transition-property: transform; }
+.pb-track.is-running .pb-dot { transform: translateX(calc(var(--layout-card-min) - var(--space-8) - var(--space-2))); }
+
+@media (max-width: 780px) {
+  .layout { display: block; padding: 0; }
+  .project:first-child .project-art:not(.project-art--wide) { height: auto; }
+  .profile { position: relative; height: auto; min-height: 640px; padding: var(--space-6) var(--layout-mobile-gutter); }
+  .profile-copy { margin-top: var(--space-8); }
+  .contact { margin-top: var(--space-6); }
+  .work { padding: var(--space-6) var(--layout-mobile-gutter) var(--space-12); }
+  .case-detail { padding: var(--space-6) var(--layout-mobile-gutter) var(--space-16); }
+  /* Телефон в хиро чуть крупнее, чем по высоте экрана: на мобильном колонка одна. */
+  .case-hero { --case-phone-width: calc(100vw - 4 * var(--layout-mobile-gutter)); grid-template-columns: minmax(0, 1fr); gap: var(--space-12); }
+  /* Телефон сверху, текст шага в полосе под ним. */
+  .case-one-pin { padding-top: var(--space-6); }
+  .case-one-stage { gap: var(--space-4); grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) var(--case-one-copy-zone); }
+  /* Слой кончается над полосой текста: на узком экране телефон не заходит под абзац. */
+  .case-one-media { bottom: calc(var(--case-one-copy-zone) + var(--space-4)); -webkit-mask-image: none; mask-image: none; }
+  .case-one-slot { grid-row: 1; }
+  .case-one-copy { grid-row: 2; align-self: stretch; }
+  .case-one-step { align-self: start; max-width: none; }
+  .case-detail-image { border-radius: var(--radius-media); }
+  .pb-shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding-inline: var(--layout-mobile-gutter); }
+  .pb-rail { position: static; padding-block: var(--space-6) 0; }
+  .pb-nav { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .pb-rail-note { max-width: none; }
+  .ds-doc { padding-block: var(--space-6) var(--space-16); }
+  .ds-doc-topbar { margin-bottom: var(--space-12); }
+  .ds-doc-media { border-radius: var(--radius-media); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .case-cursor { display: flex; }
+  html.custom-cursor-ready,
+  html.custom-cursor-ready body,
+  html.custom-cursor-ready body * { cursor: none !important; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-art { transition: background-color var(--duration-medium) var(--ease-standard), filter var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-out); }
+  .project-art:hover:not(.project-art--image) { transform: scale(.985); }
+
+  /* Reveal on scroll. Hidden states apply only once JS has added .reveal-ready,
+     so the list stays readable if the script never runs. */
+  /* Keep the project rail spatially still. Moving the whole card upward made the
+     feed look as if it jumped when the first item appeared. */
+  .reveal-ready .project { opacity: 0; }
+  .reveal-ready .project.is-revealed { animation: feed-enter var(--duration-reveal) var(--ease-reveal) both; }
+  .reveal-ready .project.is-revealed .project-meta { animation: feed-enter var(--duration-reveal) var(--ease-reveal) var(--reveal-stagger) both; }
+
+  .reveal-ready .profile-top,
+  .reveal-ready .profile-copy > *,
+  .reveal-ready .profile-footer { animation: case-enter var(--duration-reveal) var(--ease-reveal) both; }
+  .reveal-ready .profile-copy > :nth-child(1) { animation-delay: var(--reveal-stagger); }
+  .reveal-ready .profile-copy > :nth-child(2) { animation-delay: calc(var(--reveal-stagger) * 2); }
+  .reveal-ready .profile-copy > :nth-child(3) { animation-delay: calc(var(--reveal-stagger) * 3); }
+  .reveal-ready .profile-copy > :nth-child(4),
+  .reveal-ready .profile-footer { animation-delay: calc(var(--reveal-stagger) * 4); }
+  .reveal-ready .profile :focus-within,
+  .reveal-ready .profile :focus,
+  .reveal-ready .project:focus-within { animation: none; opacity: 1; transform: none; }
+
+
+  /* Cover drifts against the scroll. The scale hides the edges the shift exposes. */
+  .project-art--image .project-cover { transform: translate3d(0, var(--cover-shift, 0px), 0) scale(var(--parallax-cover-scale)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-cursor, .case-cursor span { transition: none; }
+  .avatar { transition: none; }
+}
+
+
+/* Progressive enhancement: content is visible without JS or with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .case-reveal {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-offset), 0);
+  }
+  .case-reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+    animation: case-enter var(--duration-reveal) var(--ease-reveal) var(--case-reveal-delay) both;
+  }
+  .case-reveal:focus-within { opacity: 1; transform: none; animation: none; }
+  @keyframes case-enter {
+    from { opacity: 0; transform: translate3d(0, var(--reveal-offset), 0); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes feed-enter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Приход текста — общий вход сайта (case-enter, те же токены), строка за строкой.
+     Уход — лентой вверх с растворением, его уже ведёт скролл через --d.
+     Шаг помечается .is-current скроллом, поэтому назад играет так же. */
+  .case-pitch-gestures .ds-scrolly-step.is-current > * {
+    animation: case-enter var(--duration-reveal) var(--ease-reveal) both;
+  }
+  .case-pitch-gestures .ds-scrolly-step.is-current > :nth-child(2) {
+    animation-delay: var(--reveal-stagger);
+  }
+}
+
+/* Case ATLAS pitch (case-atlas-pitch.html, 2026-09-22).
+   Three moves: the camera shot of each gesture. Values came from the macro stage
+   in the ATLAS project (04_case-study/macro/stage.html ?tune=1) — tune there, copy here.
+   --fx/--fy are focus points on the 375×812 screen: globe 336, dial 575, throw 750 (y). */
+.case-pitch-gestures { min-width: 0; }
+.case-pitch-gestures > h2 { margin: 0 0 var(--case-heading-gap); }
+.case-atlas-pitch-body { overflow-x: clip; }
+/* The sticky stage is full-bleed, but its surface begins at the case gutters. During
+   Globe → Year dial script.js removes these insets and the radius with the very same
+   progress that moves the camera: the card becomes the viewport, not a second animation. */
+/* Height: three shelves and two moves — about 1.1 screen of scroll per gesture. */
+/* --rest-*: кадр покоя для хвоста — телефон целиком по центру плашки. 1.33 = 1080/812,
+   ровно столько, чтобы он заполнил ячейку по высоте и не вылез боками. */
+.case-pitch-gestures .ds-scrolly { --rest-s: 1.15; --rest-fx: .5; --rest-fy: .5; --rest-cx: 50; --rest-cy: 50;
+  height: calc(100svh * 7.1); position: relative; left: 0; width: var(--pitch-viewport-width, 100vw); margin-left: var(--pitch-viewport-shift, -50vw); }
+.case-pitch-gestures .ds-scrolly-pin { top: 0; display: block; overflow: visible; height: 100svh; border-radius: 0; background: transparent; }
+/* Со скроллом растёт ТОЛЬКО чёрная подложка. Ячейки текста и телефона стоят намертво:
+   их коробка — стартовый прямоугольник плашки плюс её внутренние поля, и в ней ничего
+   не пересчитывается (правка Николая 2026-09-23). Телефон обрезается кромкой подложки —
+   маской на сцене по тем же переменным, что ведут подложку. */
+.case-pitch-stage { --pitch-pad: var(--space-12); --pitch-pad-top: var(--space-8); position: absolute; inset: 0;
+  clip-path: inset(var(--pitch-inset-top, var(--space-6)) var(--pitch-inset-right, var(--layout-page-gutter)) var(--pitch-inset-bottom, var(--space-6)) var(--pitch-inset-left, var(--layout-page-gutter)) round var(--pitch-radius, var(--radius-media))); }
+.case-pitch-plate { position: absolute;
+  inset: var(--pitch-inset-top, var(--space-6)) var(--pitch-inset-right, var(--layout-page-gutter)) var(--pitch-inset-bottom, var(--space-6)) var(--pitch-inset-left, var(--layout-page-gutter));
+  border-radius: var(--pitch-radius, var(--radius-media)); background: var(--color-surface-stage); }
+.case-pitch-columns { position: absolute; top: var(--space-6); bottom: 0; left: 0; right: 0;
+  width: 100%; max-width: var(--layout-max-width); margin-inline: auto;
+  padding: var(--pitch-pad-top) calc(var(--layout-page-gutter) + var(--pitch-pad)) 0;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+/* Телефон всегда доходит до нижней кромки подложки и режется ею — как у Apple. Поэтому
+   его ячейка единственная тянется вниз вместе с плашкой: низ привязан к той же переменной,
+   что ведёт подложку. Ячейка текста при этом стоит намертво — её низ фиксированный токен
+   (правка Николая 2026-09-23). */
+.case-pitch-gestures .ds-scrolly-copy { margin-bottom: calc(var(--space-6) + var(--space-8)); }
+.case-pitch-gestures .ds-scrolly-media { height: auto;
+  /* ⚠️ Ячейка телефона доходит до кромок подложки и сверху, и снизу. Сама .ds-phone-stage
+     режет телефон по своей коробке (overflow: hidden), поэтому без этого выноса срез шёл
+     по внутреннему полю ячейки, а над ним оставалась полоса — поймано Николаем 2026-09-23. */
+  margin-top: calc(var(--pitch-inset-top, var(--space-6)) - var(--space-6) - var(--pitch-pad-top));
+  margin-bottom: var(--pitch-inset-bottom, var(--space-6)); }
+/* Высота — как в дизайн-системе (1080): телефон заведомо выше ячейки, поэтому на шкале
+   и забросе он уходит ЗА верхнюю кромку, а не оставляет над собой поле — это и есть кадр,
+   которого хотел Николай (2026-09-23). Ширина ограничена отдельно: 620 = 375 ширины
+   телефона × 1.45 приближения с полем, без этого на узком окне его резало боками. */
+/* Свечение под телефоном убрано: оно подсвечивало низ и мешало читать поля как ровные. */
+.case-pitch-gestures .ds-phone-bloom { display: none; }
+.case-pitch-gestures .ds-phone-stage { --u: min(calc(100cqh / 1080), calc(100cqw / 620)); }
+/* Текст прижат к своей колонке; боковое поле уже дал padding ячеек. По вертикали шаг
+   у всех трёх шагов ОДНА верхняя кромка: блок прибит к середине колонки и поднят на
+   фиксированные --space-20, поэтому значок и фраза у всех начинаются на одной высоте
+   независимо от длины текста (правка Николая 2026-09-23). Подъём лентой со скроллом убран —
+   он двигал блоки и это выравнивание ломал; смена шагов теперь только вход и растворение. */
+.case-pitch-gestures .ds-scrolly-step { right: var(--space-8); left: 0;
+  transform: translateY(calc(var(--space-20) * -1)); }
+/* Frontal camera: no phone rotation. It only grows and changes the point under the lens.
+   Scale stays low enough for both side edges of the device to remain visible.
+   ⚠️ Кадры подобраны замером в РАСКРЫТОМ состоянии (плашка во весь экран): верх телефона
+   там не срезается, срез допустим только снизу, как у Apple. Меняешь --s или --cy — снова
+   проверь верхнюю кромку, у броска она уезжала за экран (правка Николая 2026-09-23). */
+.case-pitch-gestures [data-scrolly-step="globe"] { --s: 1.15; --fx: .5; --fy: .414; --cx: 50; --cy: 43.5; }
+.case-pitch-gestures [data-scrolly-step="dial"] { --s: 1.45; --fx: .5; --fy: .708; --cx: 50; --cy: 50; }
+/* У броска движения больше (знак, полёт планеты, смена трека) — даём ему больше прокрутки. */
+.case-pitch-gestures [data-scrolly-step="throw"] { --shelf: 1.5; --s: 1.45; --fx: .5; --fy: .924; --cx: 50; --cy: 48; }
+
+/* Канон питча: три жеста выбираются плашками. Предметные кадры держат один ракурс
+   телефона; меняется только экран. Explorer задаёт форму и открытие слева. */
+.case-pitch-explorer > h2 { margin: 0 0 var(--case-heading-gap); }
+.case-pitch-explorer-stage .ds-explorer-nav { padding: var(--space-6); }
+.case-pitch-explorer-media { position: relative; overflow: hidden; aspect-ratio: 1; }
+.case-pitch-explorer-shot { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity var(--duration-exit) var(--ease-exit); }
+/* The old shot drops out fast; the new one waits until it is half gone, then springs in. */
+.case-pitch-explorer-shot.is-current { opacity: 1; transition: opacity var(--duration-spring-quick) var(--ease-spring-quick) var(--duration-crossfade-gap); }
+.case-phone-studio-canvas { touch-action: none; cursor: grab; }
+.case-phone-studio-canvas:active { cursor: grabbing; }
+/* Dev-only angle controls: the product plate itself stays unchanged outside ?studio=1. */
+.case-phone-studio { display: grid; gap: var(--space-6); margin-top: var(--space-6); padding: var(--space-6); border: var(--border-width) solid var(--color-hairline); border-radius: var(--radius-media); background: var(--color-surface-raised); color: var(--color-text-primary); }
+.case-phone-studio-intro { display: grid; gap: var(--space-2); }
+.case-phone-studio-intro p { margin: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.case-phone-studio-intro .case-phone-studio-kicker { color: var(--color-brand-atlas); font-size: var(--font-size-label); font-weight: var(--font-weight-heading); text-transform: uppercase; }
+.case-phone-studio-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); }
+.case-phone-studio-control { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-2); align-items: center; font-size: var(--font-size-label); }
+.case-phone-studio-control input { grid-column: 1 / -1; width: 100%; accent-color: var(--color-brand-atlas); }
+.case-phone-studio-control output { color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }
+.case-phone-studio-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.case-phone-studio-actions button { min-height: var(--control-pill-height); padding-inline: var(--space-6); border: var(--border-width) solid var(--color-hairline); border-radius: var(--radius-pill); background: var(--color-surface-stage); color: var(--color-text-primary); font: inherit; cursor: pointer; }
+.case-phone-studio-actions [data-studio-export] { background: var(--color-brand-atlas); color: var(--color-surface-stage); }
+.case-phone-studio-actions button:focus-visible, .case-phone-studio-control input:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+.case-phone-studio-actions output { color: var(--color-text-secondary); font-size: var(--font-size-label); }
+@media (prefers-reduced-motion: reduce) {
+  .case-pitch-explorer-shot { transition: none; }
+}
+
+@media (max-width: 780px) {
+  .case-screen-ribbon { width: calc(100% + 2 * var(--layout-mobile-gutter)); margin-left: calc(-1 * var(--layout-mobile-gutter)); }
+  .case-phone-studio-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-pitch-explorer-stage { width: calc(100% + var(--layout-mobile-gutter) + var(--layout-mobile-gutter)); margin-inline: calc(-1 * var(--layout-mobile-gutter)); border-radius: 0; }
+  /* The shot fills the plate, tall like apple.com's; the pills ride its lower edge.
+     The square render is cropped at the sides only — the phone stays in the middle. */
+  .case-pitch-explorer-stage .ds-explorer-nav { padding: var(--space-6) 0; }
+  .case-pitch-explorer-media { aspect-ratio: 3 / 5; }
+  /* The live case keeps the whole device above its controls on a narrow screen. */
+  .case-pitch-explorer-stage[data-phone-fit-mobile] { --phone-scene-scale: var(--case-explorer-mobile-phone-scale); grid-template-areas: "phone" "controls"; }
+  [data-phone-fit-mobile] .case-pitch-explorer-media { grid-area: phone; height: var(--case-explorer-mobile-media-height); aspect-ratio: auto; }
+  [data-phone-fit-mobile] .ds-explorer-nav { grid-area: controls; box-sizing: border-box; min-height: var(--case-explorer-mobile-controls-height); display: flex; align-items: center; }
+  [data-phone-fit-mobile] .ds-explorer-steps { top: 50%; bottom: auto; transform: translateY(-50%); }
+  /* Cards travel with the carousel, fading before they pass beneath an arrow. */
+  [data-phone-fit-mobile].is-touring .ds-explorer-item { opacity: 0; pointer-events: none; transition: opacity var(--duration-exit) var(--ease-exit), width var(--duration-settle) var(--ease-settle), height var(--duration-settle) var(--ease-settle); }
+  [data-phone-fit-mobile].is-touring .ds-explorer-item:has([aria-expanded="true"]) { opacity: 1; pointer-events: auto; transition: opacity var(--duration-medium) var(--ease-standard) var(--duration-fast), width var(--duration-settle) var(--ease-settle), height var(--duration-settle) var(--ease-settle); }
+  @media (prefers-reduced-motion: reduce) {
+    [data-phone-fit-mobile].is-touring .ds-explorer-item { transition: none; }
+  }
+  /* Мобильный: телефон сверху, текст под ним. Поля плашки уже и ровные, верхний вынос
+     ячейки считается от того же --pitch-pad-top, иначе телефон вылезал за кромку на 8px. */
+  .case-pitch-stage { --pitch-pad: var(--space-6); --pitch-pad-top: var(--space-6); }
+  /* ⚠️ Строки только долями. `auto` под текст не годится: шаги внутри колонки лежат
+     абсолютом (они кроссфейдятся в одном слоте), собственной высоты у колонки нет,
+     строка схлопывается в ноль и текст уезжает за нижнюю кромку (поймано 2026-09-23). */
+  /* Строка телефона забирает всю плашку, строка текста нулевая: текст лежит в ней абсолютом
+     и прибит к нижней кромке, поэтому её высота ни на что не влияет, зато телефону достаётся
+     весь экран. Доли вроде 7fr/3fr отдавали треть экрана пустоте. */
+  /* ⚠️ Под текст отведена своя строка фиксированной высоты. Ноль тут не годится: абзацы
+     разной длины, и телефон то упирался в текст, то висел над пустотой — Николай поймал это
+     на первых двух шагах (2026-09-23). Высота считана по самому длинному абзацу. */
+  .case-pitch-columns { padding: var(--pitch-pad-top) var(--layout-page-gutter) 0; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) var(--pitch-copy-zone); }
+  .case-pitch-gestures .case-pitch-columns { padding-inline: var(--layout-mobile-gutter); }
+  .case-pitch-stage { --pitch-copy-zone: 12.5rem; }
+  .case-pitch-gestures .ds-scrolly-media { height: 100%; min-height: 0; margin-bottom: var(--space-6); }
+  /* Текст прибит к низу: у всех трёх шагов одна нижняя кромка и одно и то же расстояние
+     до края плашки, как бы длинным ни был абзац (правка Николая 2026-09-23). */
+  /* ⚠️ Поле до кромки задаём самому шагу, а не полем колонки: строка текста нулевой высоты,
+     и margin у неё ничего не двигает — коробка всё равно стоит в конце сетки (2026-09-23).
+     Привязка к --pitch-inset-bottom держит расстояние до кромки плашки одинаковым при
+     смене её геометрии. */
+  .case-pitch-gestures .ds-scrolly-step { top: auto; right: 0; transform: none;
+    bottom: calc(var(--pitch-inset-bottom, var(--space-6)) + var(--space-6)); }
+  /* Ширину телефона на узком экране ограничиваем мягче: запас 620 рассчитан на приближение
+     1.45, здесь камера почти не приближает, и телефон выходил вдвое уже нужного. */
+  .case-pitch-gestures .ds-phone-stage { --u: min(calc(100cqh / 1080), calc(100cqw / 440)); }
+  /* Камеры на телефоне нет (решение Николая 2026-09-23): кадр у всех трёх шагов один,
+     телефон стоит неподвижно и целиком, жесты играют перемоткой. Так блок читается на
+     маленьком экране, где переезды камеры превращались в возню. */
+  .case-pitch-gestures .ds-scrolly { --rest-s: 1.12; --rest-fy: .5; --rest-cy: 44; }
+  .case-pitch-gestures .ds-scrolly-step { --s: 1.12; --fy: .5; --cy: 44; }
+}

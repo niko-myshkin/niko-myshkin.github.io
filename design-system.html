@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Design system playbook for Nikolai Myshkin's portfolio." />
+    <title>Portfolio Design System</title>
+    <link rel="stylesheet" href="design-system.css?v=20261031-3" />
+    <link rel="stylesheet" href="styles.css?v=20261031-3" />
+    <script src="script.js?v=20261031-3" defer></script>
+    <script src="playbook.js?v=20261031-3" defer></script>
+    <script src="screen-gallery.js?v=20261031-3" defer></script>
+  </head>
+  <body>
+    <div class="pb-shell">
+      <aside class="pb-rail">
+        <div class="pb-rail-inner">
+          <a class="ds-link" href="index.html">← Portfolio</a>
+          <nav class="pb-nav" data-playbook-nav aria-label="Sections"></nav>
+          <p class="ds-label pb-rail-note">Click any token to copy <code>var(--name)</code>.</p>
+        </div>
+      </aside>
+
+      <main class="ds-doc pb-main" data-playbook>
+        <header class="ds-doc-topbar">
+          <p class="ds-label">Source of truth · design-system.css</p>
+        </header>
+
+        <header class="ds-doc-header">
+          <h1 class="ds-heading-1">Design system playbook</h1>
+          <p class="ds-body">Every card below is read from <code>design-system.css</code> when the page opens. Change a value there and it changes here, on the home page, and on every case page at once. Add a token and it appears here on its own.</p>
+        </header>
+
+        <div data-playbook-tokens></div>
+
+        <section class="ds-doc-section" id="components">
+          <div class="pb-section-head">
+            <h2 class="ds-heading-2 ds-doc-section-title">Components</h2>
+            <p class="ds-label">Hand-written, with states</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Type styles · .ds-display, .ds-heading-1, .ds-heading-2, .ds-body, .ds-label</p>
+            <div class="ds-doc-stack">
+              <p class="ds-display">Display — AI-native designer.</p>
+              <p class="ds-heading-1">Heading 1 — Mobile experience</p>
+              <p class="ds-heading-2">Heading 2 — Designing the experience</p>
+              <p class="ds-body">Body — product context, research, process, and the decisions behind the experience.</p>
+              <p class="ds-label">Label — Portfolio · 2026</p>
+            </div>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Buttons · .ds-button with --pill and --icon, every state</p>
+            <div class="ds-doc-actions">
+              <a class="ds-button ds-button--pill" href="#components">Default pill</a>
+              <button class="ds-button ds-button--pill" type="button" disabled>Disabled</button>
+              <button class="ds-button ds-button--pill" type="button" aria-disabled="true">aria-disabled</button>
+              <button class="ds-button ds-button--icon" type="button" aria-label="Icon button">↗</button>
+              <button class="ds-button ds-button--icon" type="button" aria-label="Icon button, disabled" disabled>↗</button>
+            </div>
+            <p class="ds-label pb-hint">Hover fades the pill to .62, active scales to .98, focus draws a 2px ring in <code>--color-focus</code>. Tab through to see it.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Flow pill · .ds-button--flow with .ds-flow-arrow, .ds-flow-label, .ds-flow-fill</p>
+            <div class="ds-doc-actions">
+              <button class="ds-button ds-button--pill ds-button--flow" type="button">
+                <svg class="ds-flow-arrow ds-flow-arrow--in" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                <span class="ds-flow-label">Flow button</span>
+                <span class="ds-flow-fill" aria-hidden="true"></span>
+                <svg class="ds-flow-arrow ds-flow-arrow--out" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </button>
+              <a class="ds-button ds-button--pill ds-button--flow" href="#components">
+                <svg class="ds-flow-arrow ds-flow-arrow--in" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                <span class="ds-flow-label">As a link</span>
+                <span class="ds-flow-fill" aria-hidden="true"></span>
+                <svg class="ds-flow-arrow ds-flow-arrow--out" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </a>
+              <button class="ds-button ds-button--pill ds-button--flow" type="button" disabled>
+                <svg class="ds-flow-arrow ds-flow-arrow--in" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                <span class="ds-flow-label">Disabled</span>
+                <span class="ds-flow-fill" aria-hidden="true"></span>
+                <svg class="ds-flow-arrow ds-flow-arrow--out" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </button>
+            </div>
+            <p class="ds-label pb-hint">Hover or tab to it: the arrows slide through, the label shifts by <code>--flow-label-shift</code>, and a circle of <code>--color-text-primary</code> grows to <code>--flow-fill-size</code> while the corners tighten to <code>--radius-control</code>. Under <code>prefers-reduced-motion</code> only the fill and the colour change.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Links · .ds-link</p>
+            <div class="ds-doc-actions">
+              <a class="ds-link" href="#components">Text link</a>
+              <a class="ds-link" href="#components">Another link</a>
+              <span class="ds-link" aria-disabled="true" tabindex="-1">Disabled link</span>
+            </div>
+            <p class="ds-label pb-hint">The underline wipes in from the left on hover and out to the right on leave.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Contact dialog · .ds-contact-dialog</p>
+            <div class="ds-doc-actions">
+              <button class="ds-button ds-button--pill" type="button" data-contact-open>Open contacts</button>
+            </div>
+            <p class="ds-label pb-hint">Native dialog keeps the page in place, traps focus, and closes with Escape.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Product trial · .ds-try</p>
+            <section class="ds-try" aria-labelledby="trial-example-title">
+              <div class="ds-try-copy">
+                <h2 class="ds-heading-2" id="trial-example-title">Try it</h2>
+                <p class="ds-body">A working prototype with a demo catalogue and audio previews.</p>
+                <div class="ds-try-actions"><a class="ds-button ds-button--pill ds-button--flow" href="atlas-app/index.html" target="_blank" rel="noopener"><svg class="ds-flow-arrow ds-flow-arrow--in" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg><span class="ds-flow-label">Open Prototype</span><span class="ds-flow-fill" aria-hidden="true"></span><svg class="ds-flow-arrow ds-flow-arrow--out" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div>
+              </div>
+              <div class="ds-try-details">
+                <p class="ds-body"><strong>Keep it on your phone</strong></p>
+                <p class="ds-body">Open the app in Safari or Chrome, then add it to your Home Screen.</p>
+                <nav class="ds-try-links" aria-label="Trial example contacts">
+                  <a class="ds-link" href="nikolai-myshkin-cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+                  <a class="ds-link" href="mailto:holadosli@gmail.com">Email</a>
+                  <a class="ds-link" href="https://t.me/nicol_ds" target="_blank" rel="noopener">Telegram</a>
+                </nav>
+              </div>
+            </section>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Screenshot gallery · .ds-screen-gallery</p>
+            <div class="ds-screen-gallery" data-screen-gallery>
+              <div class="ds-screen-gallery-viewport" tabindex="0" role="group" aria-label="Example screen gallery">
+                <div class="ds-screen-gallery-track">
+                  <figure class="ds-screen-gallery-card"><img src="atlas/01-main.webp" width="750" height="1624" loading="lazy" draggable="false" alt="Atlas globe and decade dial" /></figure>
+                  <figure class="ds-screen-gallery-card"><img src="atlas/08-track.webp" width="750" height="1624" loading="lazy" draggable="false" alt="Atlas full player" /></figure>
+                  <figure class="ds-screen-gallery-card"><img src="atlas/07-liked.webp" width="750" height="1624" loading="lazy" draggable="false" alt="Atlas liked tracks" /></figure>
+                  <figure class="ds-screen-gallery-card"><img src="atlas/09-stats.webp" width="750" height="1624" loading="lazy" draggable="false" alt="Atlas listening stats" /></figure>
+                  <figure class="ds-screen-gallery-card"><img src="atlas/10-profile.webp" width="750" height="1624" loading="lazy" draggable="false" alt="Atlas profile settings" /></figure>
+                </div>
+              </div>
+
+            </div>
+            <p class="ds-label pb-hint">A continuously rotating inward cylinder. Pointer motion adds speed without repositioning cards. Motion stops outside the viewport; reduced motion uses a native strip.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Card · .ds-card, .ds-card-eyebrow, .ds-card-title</p>
+            <div class="ds-media-grid">
+              <div class="ds-card">
+                <p class="ds-card-eyebrow">Eyebrow</p>
+                <p class="ds-card-title">A question, a column, a note</p>
+                <p class="ds-body">Body text inside the card. Children get 12px between them automatically.</p>
+              </div>
+              <div class="ds-card">
+                <p class="ds-card-eyebrow">Eyebrow</p>
+                <p class="ds-card-title">Cards pair up in a media grid</p>
+                <p class="ds-body">Under 780px the grid drops to one column.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Accordion · .ds-accordion, .ds-accordion-item, .ds-accordion-head</p>
+            <div class="ds-accordion" data-accordion>
+              <div>
+                <div class="ds-accordion-item">
+                  <button class="ds-accordion-head" type="button" aria-expanded="true" aria-controls="ds-acc-a" data-accordion-head="a">First item<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="ds-accordion-panel" id="ds-acc-a"><div><p>One item is open at a time. The panel animates through grid-template-rows, so it reaches content height without JS measuring it.</p></div></div>
+                </div>
+                <div class="ds-accordion-item">
+                  <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="ds-acc-b" data-accordion-head="b">Second item<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="ds-accordion-panel" id="ds-acc-b"><div><p>Rows are buttons, so keyboard and screen readers work without extra wiring.</p></div></div>
+                </div>
+              </div>
+              <div class="ds-accordion-media">
+                <img data-accordion-media="a" class="is-current" src="atlas/01-main.webp" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1;" />
+                <img data-accordion-media="b" src="atlas/09-stats.webp" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0;" />
+              </div>
+            </div>
+            <p class="ds-label pb-hint">Media on the right follows the open row. Under 780px the
+              columns stack and the media moves above the list.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Accordion list · .ds-accordion--list, data-accordion-multi</p>
+            <div class="ds-accordion ds-accordion--list" data-accordion data-accordion-multi>
+              <div class="ds-accordion-item">
+                <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="ds-accl-a" data-accordion-head="a">A question in one line<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+                <div class="ds-accordion-panel" id="ds-accl-a"><div><p>Every row opens on its own. The list starts closed, so a reader sees all the questions before any answer.</p></div></div>
+              </div>
+              <div class="ds-accordion-item">
+                <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="ds-accl-b" data-accordion-head="b">Another question<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+                <div class="ds-accordion-panel" id="ds-accl-b"><div><p>Same rows, head and panel as the accordion above, one column and no media.</p></div></div>
+              </div>
+            </div>
+            <p class="ds-label pb-hint">The FAQ form: text only, rows open independently, hairlines
+              between them.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Explorer · .ds-explorer, .ds-explorer-item, .ds-phone-stage, .ds-phone</p>
+            <div class="ds-explorer" data-accordion data-accordion-explorer data-accordion-empty>
+              <button class="ds-explorer-close" type="button" data-explorer-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m7 7 10 10M17 7 7 17"/></svg></button>
+              <div class="ds-explorer-nav">
+                <div class="ds-explorer-steps">
+                  <button class="ds-explorer-step" type="button" data-accordion-step="-1" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></button>
+                  <button class="ds-explorer-step" type="button" data-accordion-step="1" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+                </div>
+                <ul class="ds-explorer-list">
+                  <li class="ds-explorer-item">
+                    <div class="ds-explorer-head-wrap"><button class="ds-explorer-head" type="button" aria-expanded="false" aria-controls="ds-exp-a" data-accordion-head="a"><svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7.5v9M7.5 12h9"/></svg>First item</button></div>
+                    <div class="ds-accordion-panel" id="ds-exp-a" tabindex="-1"><div><p><strong>A pill that opens into a card.</strong> The head folds away, so the open item reads as one paragraph with a bold lead.</p></div></div>
+                  </li>
+                  <li class="ds-explorer-item">
+                    <div class="ds-explorer-head-wrap"><button class="ds-explorer-head" type="button" aria-expanded="false" aria-controls="ds-exp-b" data-accordion-head="b"><svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7.5v9M7.5 12h9"/></svg>Second item</button></div>
+                    <div class="ds-accordion-panel" id="ds-exp-b" tabindex="-1"><div><p><strong>Arrows step through.</strong> The phone swaps its screen; a page moves the camera by setting the shot for data-current.</p></div></div>
+                  </li>
+                </ul>
+              </div>
+              <figure class="ds-figure ds-explorer-media">
+                <div class="ds-phone-stage" style="--s:1.7; --fx:.5; --fy:.42; --cy:62; --ry:-8; --rz:-3;">
+                  <div class="ds-phone" aria-hidden="true">
+                    <span class="ds-phone-frame"></span><span class="ds-phone-bezel"></span>
+                    <div class="ds-phone-screen">
+                      <img src="atlas/01-main.webp" alt="" data-accordion-media="" />
+                      <img src="atlas/gesture-globe.webp" alt="" data-accordion-media="a" />
+                      <img src="atlas/gesture-dial.webp" alt="" data-accordion-media="b" />
+                    </div>
+                  </div>
+                  <span class="ds-phone-bloom"></span>
+                </div>
+              </figure>
+            </div>
+            <p class="ds-label pb-hint">The pill form of the accordion, after Apple's "Take a closer look".
+              The block is a black plate; the phone is cut by its edge. Camera is custom properties on
+              .ds-phone-stage: --s, --fx/--fy, --cx/--cy and a slight --rx/--ry/--rz; they transition over --duration-camera.
+              With data-accordion-empty (this demo) nothing is open at first and a click on the open card folds it
+              back; the phone then shows the clip marked data-accordion-media="".</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Scrolly · .ds-scrolly, .ds-scrolly-pin, .ds-scrolly-step, data-scrolly</p>
+            <div class="ds-scrolly" data-scrolly>
+              <div class="ds-scrolly-pin">
+                <div class="ds-scrolly-copy">
+                  <article class="ds-scrolly-step" data-scrolly-step="a" style="--s:1.5; --fy:.414; --cy:62;"><h3>First step</h3><p><strong>The plate sticks while you scroll.</strong> One step of text at a time; the camera rests on a shelf.</p></article>
+                  <article class="ds-scrolly-step" data-scrolly-step="b" style="--s:2.3; --fy:.708; --cy:50;"><h3>Second step</h3><p><strong>The camera follows the scroll exactly.</strong> Stop halfway and the phone is halfway too; scroll back and it plays backwards.</p></article>
+                </div>
+                <figure class="ds-figure ds-scrolly-media">
+                  <div class="ds-phone-stage">
+                    <div class="ds-phone" aria-hidden="true">
+                      <span class="ds-phone-frame"></span><span class="ds-phone-bezel"></span>
+                      <div class="ds-phone-screen">
+                        <img src="atlas/gesture-globe.webp" alt="" data-scrolly-media="a" />
+                        <img src="atlas/gesture-dial.webp" alt="" data-scrolly-media="b" />
+                      </div>
+                    </div>
+                    <span class="ds-phone-bloom"></span>
+                  </div>
+                </figure>
+              </div>
+            </div>
+            <p class="ds-label pb-hint">A story the scroll drives, after apple.com product pages. One screen of scroll
+              per step; each step carries its shot (--s, --fx, --fy, --cx, --cy) and script.js blends between them.
+              Scroll the page to see it.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Flow · .ds-flow, .ds-flow-steps, .ds-flow-step, .ds-flow-loop</p>
+            <figure class="ds-figure ds-flow" style="--ds-flow-steps: 3"><ol class="ds-flow-steps"><li class="ds-flow-step"><span class="ds-flow-num">01</span><span class="ds-flow-title">Step</span><span class="ds-flow-note">what happens</span></li><li class="ds-flow-step"><span class="ds-flow-num">02</span><span class="ds-flow-title">Step</span><span class="ds-flow-note">what happens</span></li><li class="ds-flow-step"><span class="ds-flow-num">03</span><span class="ds-flow-title">Step</span><span class="ds-flow-note">what happens</span></li></ol><div class="ds-flow-loop"><span>back to the first step</span></div></figure>
+            <p class="ds-label pb-hint">A scenario as an ordered list. Set --ds-flow-steps to the number of
+              steps so the loop lands under the first and last. Under 780px the steps stack.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Device · .ds-device, .ds-device-island</p>
+            <div class="ds-device" style="--k: .5;">
+              <div class="ds-embed" style="height: 406px;">
+                <img src="atlas/01-main.webp" alt="" width="750" height="1624" style="display: block; width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <span class="ds-device-island" aria-hidden="true"></span>
+            </div>
+            <p class="ds-label pb-hint">Bezel, corner radius and the island are shares of a real
+              iPhone Pro brought to the 375×812 frame. All three multiply by <code>--k</code>, the
+              same scale the embed is rendered at, so the body shrinks as one piece.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Media frame · .ds-doc-media, radius <code>--radius-media</code></p>
+            <div class="ds-doc-media" aria-label="4 by 3 media frame example"></div>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Screens and captions · .ds-screen, .ds-figure, .ds-figure-caption, .ds-media-grid--3</p>
+            <div class="ds-media-grid ds-media-grid--3">
+              <figure class="ds-figure">
+                <img class="ds-screen" src="atlas/01-main.webp" alt="Phone screen example" width="750" height="1624" loading="lazy" decoding="async" />
+                <figcaption class="ds-figure-caption">A screen with a caption under it</figcaption>
+              </figure>
+              <figure class="ds-figure">
+                <img class="ds-screen" src="atlas/09-stats.webp" alt="Phone screen example" width="750" height="1624" loading="lazy" decoding="async" />
+                <figcaption class="ds-figure-caption">Inside a grid a frame fills its cell</figcaption>
+              </figure>
+              <figure class="ds-figure">
+                <img class="ds-screen" src="atlas/01-main.webp" alt="Phone screen example" width="750" height="1624" loading="lazy" decoding="async" />
+                <figcaption class="ds-figure-caption">Three across on desktop, one on mobile</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Device frame · .ds-device, .ds-device-island, .ds-embed</p>
+            <div class="pb-device-demo">
+              <div class="ds-device" style="--k: .53">
+                <div class="ds-embed">
+                  <img class="ds-screen" src="atlas/01-main.webp" alt="Prototype inside the device frame" width="750" height="1624" loading="lazy" decoding="async" />
+                </div>
+                <span class="ds-device-island" aria-hidden="true"></span>
+              </div>
+            </div>
+            <p class="ds-label pb-hint">On a case page the frame holds a live iframe, and script.js writes <code>--k</code> so the body, the radius and the island scale with it. Here the scale is fixed.</p>
+          </div>
+
+          <div class="pb-block">
+            <p class="ds-label pb-block-title">Gradients · project covers</p>
+            <div class="ds-media-grid">
+              <div class="pb-gradient" style="background: var(--gradient-project-paper)"><span class="ds-label">--gradient-project-paper</span></div>
+              <div class="pb-gradient" style="background: var(--gradient-project-ink)"><span class="ds-label">--gradient-project-ink</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ds-doc-section" id="rules">
+          <div class="pb-section-head">
+            <h2 class="ds-heading-2 ds-doc-section-title">Rules</h2>
+            <p class="ds-label">How to change things</p>
+          </div>
+          <div class="ds-media-grid">
+            <div class="ds-card">
+              <p class="ds-card-eyebrow">One place</p>
+              <p class="ds-card-title">Global values live in design-system.css</p>
+              <p class="ds-body">styles.css is for page composition only — structure that is not reused. A value written by hand anywhere is a bug.</p>
+            </div>
+            <div class="ds-card">
+              <p class="ds-card-eyebrow">New value</p>
+              <p class="ds-card-title">Add the token first, then use it</p>
+              <p class="ds-body">No token for what you need? Declare it on :root, then reference it. It shows up on this page by itself.</p>
+            </div>
+            <div class="ds-card">
+              <p class="ds-card-eyebrow">Dark theme</p>
+              <p class="ds-card-title">Override tokens, never components</p>
+              <p class="ds-body">Dark mode redefines values in :root[data-theme="dark"]. No component gets its own dark rule.</p>
+            </div>
+            <div class="ds-card">
+              <p class="ds-card-eyebrow">Cache</p>
+              <p class="ds-card-title">Bump ?v= in all four HTML files</p>
+              <p class="ds-body">Asset versions are hand-written, three per file. Miss one and the browser serves the old CSS.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <dialog class="ds-contact-dialog ds-theme-dark" data-contact-dialog aria-labelledby="contact-title" tabindex="-1">
+      <div class="ds-contact-header">
+        <h2 class="ds-contact-title" id="contact-title">Contact</h2>
+        <button class="ds-contact-close" type="button" data-contact-close aria-label="Close contacts">×</button>
+      </div>
+      <div class="ds-contact-list">
+        <button class="ds-contact-item" type="button" data-copy-email aria-label="Copy email address holadosli@gmail.com">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="ds-contact-envelope"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></g><path class="ds-contact-check" d="m4 12 5 5L20 6"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">Email</span><span class="ds-contact-value">holadosli@gmail.com</span></span>
+        </button>
+        <span class="sr-only" data-copy-status aria-live="polite"></span>
+        <a class="ds-contact-item" href="https://t.me/nicol_ds" target="_blank" rel="noopener">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3 3 10l6.5 3.2L12 20l9-17Z"></path><path d="M9.5 13.2 21 3"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">Telegram</span><span class="ds-contact-value">@nicol_ds</span></span>
+        </a>
+        <a class="ds-contact-item" href="https://www.linkedin.com/in/nikolai-myshkin/" target="_blank" rel="noopener">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="3"></rect><path d="M7 10v7M7 7v.1M11 17v-7M11 13a3 3 0 0 1 6 0v4"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">LinkedIn</span><span class="ds-contact-value">Nikolai Myshkin</span></span>
+        </a>
+        <a class="ds-contact-item" href="nikolai-myshkin-cv.pdf" target="_blank" rel="noopener">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"></path><path d="M14 2v5h4M8 12h7M8 16h7"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">CV</span><span class="ds-contact-value">Open PDF</span></span>
+        </a>
+      </div>
+    </dialog>
+  </body>
+</html>

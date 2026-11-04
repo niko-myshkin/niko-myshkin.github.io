@@ -1,0 +1,326 @@
+<!doctype html>
+<!-- Черновик v2 (2026-09-14): модульная структура кейса, текст по-русски для вычитки.
+     Основная страница — case-atlas.html, её не трогаем, пока v2 не согласована.
+     Модуль = заголовок-утверждение + кадр или движение + строка с числом: из таких
+     модулей потом режутся Behance, Dribbble, LinkedIn и X. План — Case-01 04_case-study/case-outline.md. -->
+<html lang="ru" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="ATLAS: музыкальная машина времени, которая забрасывает в звук места и эпохи. Продуктовый кейс Николая Мышкина." />
+    <title>ATLAS · Николай Мышкин · черновик v2</title>
+    <link rel="stylesheet" href="design-system.css?v=20261031-3" />
+    <link rel="stylesheet" href="styles.css?v=20261031-3" />
+    <script src="script.js?v=20261031-3" defer></script>
+  </head>
+  <body class="case-detail-body" data-case-reveal>
+    <main class="case-detail" id="top">
+      <header class="case-detail-topbar">
+        <a class="ds-link case-back" href="index.html">← Назад</a>
+      </header>
+
+      <!-- 1. Hero: крючок вместо имени, «концепт», живой прототип. -->
+      <section class="case-hero">
+        <div class="case-detail-copy case-hero-copy">
+          <h1><span class="case-hero-brand">ATLAS:</span><br />заброс в музыку другого места и эпохи</h1>
+          <p>ATLAS — концепт мобильного приложения, где музыку не выбирают: в неё забрасывает.
+            Глобус задаёт место, шкала лет — время, а заброс переносит в случайную точку мира
+            и случайную эпоху.</p>
+          <p>Моя роль: продуктовый и интерактивный дизайн от начала до конца и работающий
+            прототип, собранный с ИИ-агентами.</p>
+          <p class="case-actions">
+            <a class="ds-button ds-button--pill" href="atlas-app/index.html" target="_blank" rel="noopener">Попробовать</a>
+          </p>
+        </div>
+        <figure class="ds-figure case-hero-media">
+          <div class="ds-device">
+            <div class="ds-embed" data-embed>
+              <iframe src="atlas-app/index.html?inset=44" title="Прототип ATLAS" allow="autoplay"></iframe>
+            </div>
+            <div class="ds-device-status" aria-hidden="true">
+              <span data-device-clock>9:41</span>
+              <span class="ds-device-status-right">
+                <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8.5" width="3" height="3.5" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 4.2a10 10 0 0 1 14 0"/><path d="M3.6 7a6.4 6.4 0 0 1 8.8 0"/><path d="M6.2 9.7a2.7 2.7 0 0 1 3.6 0"/></svg>
+                <svg viewBox="0 0 26 12" fill="none"><rect x=".6" y=".6" width="21" height="10.8" rx="3.2" stroke="currentColor" stroke-opacity=".45" stroke-width="1.1"/><rect x="2.2" y="2.2" width="14" height="7.6" rx="2" fill="currentColor"/><path d="M23.4 4.2v3.6a2.3 2.3 0 0 0 0-3.6z" fill="currentColor" fill-opacity=".45"/></svg>
+              </span>
+            </div>
+            <span class="ds-device-island" aria-hidden="true"></span>
+          </div>
+        </figure>
+      </section>
+
+      <!-- 2. Тезис. «Не спрашивает ПЕРВЫМ»: уточнять глобусом и шкалой можно, спрашивать на входе — нет.
+           Строка «Another app asking…» снята: Radiooooo тоже играет сразу, упрёк был бы неправдой.
+           Сам тезис — гипотеза П в модуле 9, там он честно помечен непроверенным. -->
+      <section class="case-detail-copy case-detail-copy--section case-statement-sec">
+        <h2 class="ds-heading-2 ds-statement" data-statement><span class="case-statement-line">Выбор — это работа.</span><span class="case-statement-line case-statement-accent">ATLAS не спрашивает первым.</span></h2>
+      </section>
+
+      <!-- 3. Механика: место, время, заброс. Radiooooo — одной строкой текста, без чужих экранов (решение 2026-09-14). -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Крутишь планету — слышишь место</h2>
+        <p>У Radiooooo та же идея — место и время. Но клик по стране молча кладёт её в маршрут,
+          а плеер продолжает играть прежнее: ткнул в место, а слышишь не его.</p>
+        <p>Здесь связь прямая: глобус задаёт место, шкала лет — время, заброс — оба разом.
+          Первый звук — одно касание ▶, дальше любой поворот планеты или шкалы сразу меняет трек.</p>
+      </section>
+      <div class="case-detail-media case-mechanics">
+        <iframe src="atlas-app/index.html?view=mechanics" title="Механики ATLAS вживую: глобус, шкала лет и заброс" loading="lazy"></iframe>
+      </div>
+      <!-- Ролик без автозапуска: общий script.js на этом этапе не трогаем, а автоплей мимо
+           prefers-reduced-motion запрещён правилами сайта. Проигрывание в поле зрения — этап 2. -->
+      <figure class="case-detail-media ds-figure">
+        <video class="ds-screen" src="atlas/04-inertia.mp4" controls muted loop playsinline preload="metadata" poster="atlas/01-main.webp" width="750" height="1624"></video>
+        <figcaption class="ds-figure-caption">Инерция и пружина забирают скорость пальца: между броском и посадкой нет шва. Планету отпустили над Тихим океаном — она докрутилась сама и села на Мумбаи, трек сменился вместе с ней.</figcaption>
+      </figure>
+
+      <!-- 4. Арифметика → правило. Числа — замер по PLACES каталога 2026-09-14 (43 места × 10 эпох),
+           меняется каталог — пересчитать. Диаграмма живых мест по декадам — этап 2. -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Время ведёт, места уступают</h2>
+        <p class="case-para--lead">220 из 430 пар «место × эпоха» пустые — 51%. В 1930-е звучат
+          18 мест из 43, в 1970-е — 34, сейчас — 31.</p>
+        <p>Самое трудное решение проекта. Первая версия фильтровала в обе стороны: выбираешь город —
+          и годы, где у него нет музыки, гаснут. При половине пустых пар гасла бо́льшая часть шкалы,
+          и продукт читался так, будто с тобой спорит.</p>
+        <p>Теперь шкала крутится всегда, а город, которому в этой декаде нечего играть, уходит
+          с глобуса — и планета доворачивает к ближайшему живому. Мир перестраивается под время,
+          а не наоборот. Все 220 пустых пар проверены прогоном: везде место уступает живому,
+          тишины нет.</p>
+      </section>
+      <div class="case-detail-media case-pair case-pair--screens ds-media-grid">
+        <figure class="ds-figure"><img class="ds-screen" src="atlas/06a-era-1970.webp" alt="Кингстон в 1970-е" width="750" height="1624" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">Кингстон, 1970-е: Карибы густые.</figcaption></figure>
+        <figure class="ds-figure"><img class="ds-screen" src="atlas/06b-era-2010.webp" alt="Кингстон в 2010-е" width="750" height="1624" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">Тот же город, 2010-е: половина мира ушла с глобуса, а шкала крутится.</figcaption></figure>
+      </div>
+
+      <!-- 5. Решения с отказами: правка по живому сигналу + что вырезано. Пара «кость → шар» — этап 2. -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Шкалу прочитали как кнопку</h2>
+        <p>Интервью не было, но был первый человек, увидевший экран со стороны. Он принял шкалу
+          лет за кнопку: стеклянная капсула была ровно по размеру одного года, а выделенный
+          элемент читается кнопкой.</p>
+        <p>Капсулу заменил барабан: корпус охватывает весь механизм, годы едут внутри, и шкалу
+          хочется крутить.</p>
+      </section>
+      <div class="case-detail-media case-pair ds-media-grid">
+        <figure class="ds-figure"><img class="ds-screen" src="atlas/dial-before.webp" alt="Шкала лет со стеклянной капсулой на одном годе" width="1125" height="420" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">До: капсула ровно по размеру одного года.</figcaption></figure>
+        <figure class="ds-figure"><img class="ds-screen" src="atlas/dial-after.webp" alt="Шкала лет барабаном во всю строку" width="1125" height="420" loading="lazy" decoding="async" /><figcaption class="ds-figure-caption">После: барабан во всю строку, годы едут внутри.</figcaption></figure>
+      </div>
+
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Что вырезано и почему</h2>
+        <p>Каждый отказ записан в журнал вместе с причиной. Четыре главных — по порядку.</p>
+      </section>
+      <div class="case-detail-media ds-media-grid">
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Снято 19 августа</p>
+          <h3 class="ds-card-title">Shuffle и repeat</h3>
+          <p class="ds-body">Зацикливание и повтор — не целевые действия: заброс и так случаен. Их место в нижнем ряду заняли ♥ и очередь.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Снято 25 августа</p>
+          <h3 class="ds-card-title">«Честная тишина»</h3>
+          <p class="ds-body">Там, где архив пуст, продукт говорил об этом и играл атмосферу места. Правило времени сделало это состояние недостижимым, а механика, до которой не дойти, — уже не фича. Ушла вместе с экраном.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Снято 26 августа</p>
+          <h3 class="ds-card-title">AI-подбор</h3>
+          <p class="ds-body">Июньский бриф называл AI-курацию сердцем проекта. Её не построили — и продукт не пострадал: отличие дали заброс и физика. Текстовый запрос — ровно тот выбор, от которого продукт уходит.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Снято 29 августа</p>
+          <h3 class="ds-card-title">Кость</h3>
+          <p class="ds-body">Знаком заброса бо́льшую часть проекта была кость. Но кость показывает результат, а у заброса его нет — знак стал шаром с двумя кольцами, который каждый раз ложится в новой позе.</p>
+        </article>
+      </div>
+
+      <!-- 6. Визуальная система. Картинка «свет как язык мест» — этап 2. -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Свет — язык мест</h2>
+        <p class="case-para--lead">Разброс оттенка между треками: 38 из 255 → 61.</p>
+        <p>Каждый трек светится своим оттенком, и ведёт его пара «место + жанр». На каноничной
+          насыщенности разница между треками была 38 из 255 — глазом почти не читалась. Замерили
+          варианты, подняли насыщенность и долю места до 60% — разброс 61, в 1,6 раза больше.</p>
+        <p>Сама система — на двух уровнях. Структура: одна шапка, одна верхняя линия и один ряд
+          управления на всех экранах. Элементы: только токены канона — аудит нашёл 13 разных
+          кеглей и три разных play, остались шкала и один play.</p>
+        <p>Доступность — рамка, а не полировка: текст не меньше 13 px, тач-зона не меньше 44 px,
+          движение уважает настройку «уменьшить движение».</p>
+      </section>
+
+      <!-- 7. Сценарий вместо «Every screen»: экраны по порядку и с подписями. «Карта» → «коллекция»:
+           карты находок в продукте нет, есть список и места (ревью, прогон 3). Пустое состояние гостя — этап 2. -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Один экран, всё остальное — поверх</h2>
+        <p>Экран один, остальное открывается шторками поверх и сценарий не рвёт. Находки копятся
+          коллекцией — списком и местами.</p>
+      </section>
+      <figure class="case-detail-media ds-figure ds-flow">
+        <ol class="ds-flow-steps">
+          <li class="ds-flow-step"><span class="ds-flow-num">01</span><span class="ds-flow-title">Заброс</span><span class="ds-flow-note">одно касание</span></li>
+          <li class="ds-flow-step"><span class="ds-flow-num">02</span><span class="ds-flow-title">Играет</span><span class="ds-flow-note">место и эпоха уже выбраны</span></li>
+          <li class="ds-flow-step"><span class="ds-flow-num">03</span><span class="ds-flow-title">Уточняешь</span><span class="ds-flow-note">глобус и шкала лет</span></li>
+          <li class="ds-flow-step"><span class="ds-flow-num">04</span><span class="ds-flow-title">Сохраняешь</span><span class="ds-flow-note">♥ на находке</span></li>
+          <li class="ds-flow-step"><span class="ds-flow-num">05</span><span class="ds-flow-title">Коллекция</span><span class="ds-flow-note">список и места</span></li>
+        </ol>
+        <div class="ds-flow-loop"><span>из коллекции — снова в заброс</span></div>
+      </figure>
+      <div class="case-detail-media ds-media-grid case-screen-gallery">
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/01-main.webp" alt="Главный экран" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">01 · Главный экран: место и эпоха уже выбраны забросом.</figcaption>
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/08-track.webp" alt="Экран трека" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">02 · Трек.</figcaption>
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/11-signin.webp" alt="Окно входа" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">03 · Гость нажал ♥ — окно входа.</figcaption>
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/12-signup.webp" alt="Регистрация" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">04 · Регистрация.</figcaption>
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/07-liked.webp" alt="Находки" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">05 · Находки: всё, что отмечено ♥.</figcaption>
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/14-rowmenu.webp" alt="Действия со строкой находки" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">06 · Действия со строкой находки.</figcaption>
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/09-stats.webp" alt="Статистика прослушиваний" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">07 · Статистика: места и эпохи, которые ты нашёл.</figcaption>
+        </figure>
+        <figure class="ds-figure">
+          <img class="ds-screen" src="atlas/10-profile.webp" alt="Профиль" width="750" height="1624" decoding="async" />
+          <figcaption class="ds-figure-caption">08 · Профиль.</figcaption>
+        </figure>
+      </div>
+
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Вход — только когда есть что сохранить</h2>
+        <p>Гость ничего не копит: ♥ и кнопка списка поднимают окно входа. После входа выполняется
+          то, ради чего человек пришёл, — находка, из-за которой он нажал ♥, уже в списке.</p>
+        <p>Бэкенда нет: профиль живёт на телефоне, почта подойдёт любая. Чтобы экраны находок
+          и статистики не были пустыми, вход подтягивает демо-коллекцию — как будто профиль уже был.</p>
+      </section>
+      <figure class="case-detail-media ds-figure ds-flow" style="--ds-flow-steps: 4">
+        <ol class="ds-flow-steps">
+          <li class="ds-flow-step"><span class="ds-flow-num">01</span><span class="ds-flow-title">♥ у гостя</span><span class="ds-flow-note">находка ещё не сохраняется</span></li>
+          <li class="ds-flow-step"><span class="ds-flow-num">02</span><span class="ds-flow-title">Окно входа</span><span class="ds-flow-note">одно поле — почта</span></li>
+          <li class="ds-flow-step"><span class="ds-flow-num">03</span><span class="ds-flow-title">Вход</span><span class="ds-flow-note">любая почта, всё на телефоне</span></li>
+          <li class="ds-flow-step"><span class="ds-flow-num">04</span><span class="ds-flow-title">Находка на месте</span><span class="ds-flow-note">та, ради которой входили</span></li>
+        </ol>
+      </figure>
+
+      <!-- 8. Имя и бренд — из Case-01 03_design/brand.md §1 и §3.
+           ⚠️ Обоснование «собрание карт» в brand.md помечено «подтвердить или заменить» — ждёт Николая. -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Почему ATLAS, если времени в имени нет</h2>
+        <p>Атлас — не одна карта, а собрание карт: каждая пара «место × время» — отдельный лист.
+          Имя короткое и одинаково читается по-русски и по-английски.</p>
+        <p>Дефект у имени есть, и он записан: в нём только место. Кандидаты с обеими осями —
+          Elsewhen, Skywave, Strata, Palimpsest — не прошли. Знак унаследовал тот же дефект: шар
+          с орбитой — тоже про место. Меняем одно — пересматриваем оба.</p>
+        <p>Бренд держится и на том, чего продукт о себе не говорит.</p>
+      </section>
+      <div class="case-detail-media ds-media-grid ds-media-grid--4">
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Не обещаем</p>
+          <h3 class="ds-card-title">Полные треки</h3>
+          <p class="ds-body">Играют 30-секундные превью Apple, каталог — мок из 630 треков.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Не обещаем</p>
+          <h3 class="ds-card-title">Умный подбор</h3>
+          <p class="ds-body">AI выведен из ядра, ничего такого не построено.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Не обещаем</p>
+          <h3 class="ds-card-title">Офлайн</h3>
+          <p class="ds-body">Звук и портреты артистов грузятся из сети.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">Не обещаем</p>
+          <h3 class="ds-card-title">Чисел, которых нет</h3>
+          <p class="ds-body">Ни слушателей, ни рейтингов, ни отзывов.</p>
+        </article>
+      </div>
+
+      <!-- 9. Ставки со статусом «не проверено» — Case-01 02_research/ux-test-plan.md, раздел 1,
+           порядок утверждён 2026-09-14 (Г2 → Г1 → Г3 → П → Г4). Коды гипотез внутренние, на странице — номера. -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <h2>Что ещё не проверено</h2>
+        <p>Пользователей у прототипа пока нет, поэтому здесь не выводы, а ставки. У каждой записано,
+          что её опровергнет, а пороги фиксируются до первого участника — после это была бы подгонка.
+          Персон тоже нет: без интервью это утверждение о людях, которых не видел.</p>
+        <p>Порядок — по тому, что сломается, если ставка неверна, и насколько дёшево это проверить.
+          Сценарий теста готов, режим теста встроен в сам прототип.</p>
+      </section>
+      <div class="case-detail-media ds-media-grid">
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">01 · не проверено</p>
+          <h3 class="ds-card-title">Глобус и шкала понятны без подписей</h3>
+          <p class="ds-body">Меряем: что человек называет до первого касания. Опровергнет: большинство не называет шкалу или глобус тем, что крутят. Единственный живой сигнал уже был отказом — шкалу прочитали кнопкой.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">02 · не проверено</p>
+          <h3 class="ds-card-title">Одно касание — и играет</h3>
+          <p class="ds-body">Меряем: время от первого экрана до звука и число действий. Опровергнет: дольше, чем у Radiooooo, или люди ищут меню.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">03 · не проверено</p>
+          <h3 class="ds-card-title">Место и эпоху найти быстрее, чем в Radiooooo</h3>
+          <p class="ds-body">Меряем: одна и та же задача в двух продуктах — успех, время, ошибки. Опровергнет: в ATLAS не лучше.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">04 · не проверено</p>
+          <h3 class="ds-card-title">Выбирать музыку утомительно</h3>
+          <p class="ds-body">Меряем: интервью о том, как человек слушал раньше. Опровергнет: большинству выбирать нравится.</p>
+        </article>
+        <article class="ds-card">
+          <p class="ds-card-eyebrow">05 · не проверено</p>
+          <h3 class="ds-card-title">Находки — причина вернуться</h3>
+          <p class="ds-body">Меряем: сохраняют ли без просьбы. Одной сессией это честно не проверить — нужны повторные.</p>
+        </article>
+      </div>
+
+      <!-- 10. FAQ ужат до четырёх вопросов «для собеседования»; остальные восемь разошлись по модулям. -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <p class="ds-label">FAQ</p>
+        <h2>Вопросы, которые стоит задать</h2>
+      </section>
+      <div class="case-faq ds-accordion ds-accordion--list" data-accordion data-accordion-multi>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-12" data-accordion-head="12">Кто за это платит?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-12"><div><p>Отдельным приложением ATLAS упирается в лицензии: чтобы играть полные треки, нужны права на каталог. Поэтому реалистичная модель — не своё приложение, а механика внутри стримингового сервиса: «Каталог ваш. Дверь наша». Сервис уже платит за музыку, а получает новый повод её открыть — и та же главная метрика, возвращаемость.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-10" data-accordion-head="10">Как шла работа?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-10"><div><p>Сначала код: прототип — источник правды, Figma догоняет. Код писали Claude Code и Codex, задачи и приёмка по замерам — мои. Каждое решение записано в журнал: 2929 строк и 55 снапшотов.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-7" data-accordion-head="7">Как продукт растёт?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-7"><div><p>Каталог вырос с 13 городов до 43 и с 94 треков до 630, а интерфейс не перестраивали. Десктоп собран на том же ядре: каталог, физика шкалы и звук — из общего кода, а знак заброса и 3D-глобус пока продублированы и следующие на вынос.</p></div></div>
+        </div>
+        <div class="ds-accordion-item">
+          <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="faq-11" data-accordion-head="11">Что дальше?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ds-accordion-panel" id="faq-11"><div><p>Сначала тест на людях — он решает судьбу ставок выше. Потом довести десктоп: правая панель пока заглушка, а знак заброса и 3D-глобус — вынести в общее ядро. Потом натив — ради настоящей хаптики, которой нет в iOS Safari.</p></div></div>
+        </div>
+      </div>
+
+      <!-- 11. Честность в футере: 30-секундные превью названы прямо (ревью, прогон 3). -->
+      <section class="case-detail-copy case-detail-copy--section">
+        <p class="ds-label">Концепт, собранный и живой. 43 города, 10 десятилетий, 630 треков:
+          мок-каталог с настоящими артистами, звук — 30-секундные превью Apple, бэкенда и лицензии
+          нет. Исследование пока гипотеза, и страница так и говорит.</p>
+        <p class="case-cta"><a class="ds-button ds-button--pill" href="atlas-app/index.html" target="_blank" rel="noreferrer">Открыть прототип ↗</a></p>
+      </section>
+    </main>
+  </body>
+</html>

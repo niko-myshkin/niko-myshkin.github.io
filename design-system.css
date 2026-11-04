@@ -1,0 +1,626 @@
+@font-face {
+  font-family: "ABC Areal";
+  src: url("fonts/ABCArealVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+
+  /* Color */
+  --color-text-primary: #000;
+  --color-text-secondary: #6c6c70;
+  --color-surface-page: #f5f3ef;
+  --color-focus: #4058cf;
+  --color-cursor-ink: #fff;
+  --color-hairline: color-mix(in srgb, var(--color-text-secondary) 30%, transparent);
+  --color-project-base: #111;
+  --color-brand-atlas: #EAB949;
+  --gradient-project-paper: linear-gradient(158deg, #ece4d4 0%, #bdc8a8 34%, #8ca8a6 66%, #ce9a7f 100%);
+  /* Raised surface — a pill or card one step off the page, in either theme. */
+  --color-surface-raised: color-mix(in srgb, var(--color-text-primary) 9%, var(--color-surface-page));
+  /* Product media stays black; the explorer plate sits just below the page tone. */
+  --color-surface-stage: #000;
+  --color-surface-explorer: #101011;
+  --color-surface-explorer-control: color-mix(in srgb, var(--color-text-primary) 4%, var(--color-surface-page));
+  --color-contact-muted: color-mix(in srgb, var(--color-text-primary) 50%, var(--color-surface-page));
+  --color-modal-backdrop: color-mix(in srgb, var(--color-surface-stage) 72%, transparent);
+  /* Rendered phone (.ds-phone): titanium frame, glass edge, black bezel. */
+  --color-device-bezel: #030303;
+  --color-device-shell: #1b1b1d;
+  --gradient-project-ink: linear-gradient(136deg, #13151c 0%, #263660 28%, #5c4d80 56%, #ad7788 78%, #d1ad99 100%);
+
+  /* Typography */
+  --font-family-sans: "ABC Areal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-heading: 510;
+  /* Ступени. Единственное место, где у текста живут числа. */
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-2xl: clamp(28px, 2.6vw, 34px);
+  --text-2-5xl: clamp(28px, 3vw, 45px);
+  --text-3xl: clamp(36px, 3.8vw, 58px);
+  --text-4xl: clamp(43px, 4vw, 58px);
+  --text-5xl: clamp(48px, 4.7vw, 72px);
+
+  /* Роли. Только ссылки на ступени — новый размер тут не появляется. */
+  --font-size-label: var(--text-sm);
+  --font-size-body: var(--text-md);
+  --font-size-button: var(--text-lg);
+  --line-height-button: 1.1;
+  --font-size-profile-name: var(--text-lg);
+  --font-size-card-title: var(--text-2xl);
+  --font-size-faq-question: var(--text-lg);
+  --font-size-case-h3: var(--text-2-5xl);
+  --font-size-case-h2: var(--text-3xl);
+  --font-size-display: var(--text-4xl);
+  --font-size-case-h1: var(--text-5xl);
+  --line-height-tight: 1.02;
+  --line-height-heading: 1.06;
+  --line-height-body: 1.45;
+  --letter-spacing-heading: -.035em;
+  --letter-spacing-case: -.04em;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+
+  /* Layout */
+  --layout-max-width: 1280px;
+  --layout-columns: minmax(0, 4fr) minmax(0, 6fr);
+  --layout-column-gap: var(--space-20);
+  --layout-page-gutter: clamp(30px, 5vw, 76px);
+  --layout-mobile-gutter: 22px;
+  --layout-rail-width: 200px;
+  --layout-card-min: 200px;
+  --content-heading-max-width: 430px;
+  --content-intro-max-width: 300px;
+  --content-body-max-width: 420px;
+  --contact-dialog-width: 328px;
+  --contact-dialog-padding: 20px;
+  --contact-close-size: 36px;
+  --contact-icon-shrink: .75;
+  --contact-check-path-length: 24;
+  --contact-copy-confirm-duration: 1800ms;
+  --case-heading-max-width: 520px;
+  --avatar-width: clamp(156px, 14vw, 190px);
+  --avatar-height: var(--avatar-width);
+  --project-stack-gap: var(--space-30);
+  --case-grid-gap: var(--space-6);
+  --case-heading-gap: var(--space-6);
+  --case-para-gap: var(--space-4);
+  --case-action-gap: var(--space-12);
+  --case-topbar-gap: var(--space-24);
+  --case-media-gap: var(--space-12);
+  --case-section-gap: var(--space-30);
+  --case-mechanics-height: 900px;
+  /* Отступ от края iframe механик до карточек — так их верстает сам прототип (--showcase-pad).
+     Точное значение script.js меряет по iframe: у того свой брейкпоинт (700 по ширине iframe),
+     с 780 страницы он не совпадает. Здесь — запасное, на случай без JS. */
+  --case-mechanics-inset: 24px;
+  --case-phone-width: min(360px, calc((100svh - 260px) * 0.4618));
+  --case-screen-column: var(--case-phone-width);
+  --case-screen-offset: var(--space-20);
+  /* One object (case-atlas.html): одна липкая сцена на первый экран и три жеста. Шаг — сколько
+     прокрутки занимает одна поза телефона; зона текста — полоса под телефоном на мобильной. */
+  --case-one-step-length: 100svh;
+  --case-one-copy-zone: 40svh;
+  /* Лента текстов: прошедший абзац уезжает вверх на столько, следующий приходит снизу. */
+  --case-one-feed-shift: var(--space-16);
+  /* Размер 3D-телефона в сцене: множитель поверх поз из лаборатории. */
+  --case-one-phone-scale: 0.75;
+  --case-explorer-mobile-media-height: min(130vw, 60svh);
+  --case-explorer-mobile-phone-scale: 1.12;
+  --case-explorer-mobile-phone-inset: var(--space-4);
+  --case-explorer-mobile-controls-height: calc(var(--space-30) + var(--space-20));
+  /* Screenshot gallery: the inside of a rotating cylinder. */
+  --layout-gallery-card-width: clamp(180px, 18vw, 240px);
+  --layout-gallery-card-ratio: 375 / 812;
+  --layout-gallery-height: clamp(440px, 48vw, 640px);
+  --layout-gallery-gap: var(--space-6);
+  --layout-gallery-perspective: 1400px;
+  --layout-gallery-spread: 1.05;
+  --layout-gallery-camera-push: .35;
+  --layout-gallery-opacity-power: .75;
+  --layout-gallery-fade-width: clamp(24px, 8vw, 120px);
+  --scroll-gallery-speed: 8.4;
+  --scroll-gallery-hover-factor: .12;
+  --scroll-gallery-max-boost: 100;
+  --duration-gallery-coast: var(--duration-camera);
+  --duration-gallery-response: var(--duration-fast);
+
+  /* Shape and border */
+  --border-width: 1px;
+  --focus-width: 2px;
+  --radius-control: 10px;
+  --radius-media: 32px;
+  --radius-screen: 24px;
+  --device-bezel: 10px;
+  --device-radius: 54px;
+  --device-island-width: 120px;
+  --device-island-height: 34px;
+  --device-island-top: 12px;
+  --device-status-top: 16px;
+  --device-status-inset: 26px;
+  --radius-pill: 999px;
+  --flow-fill-size: 220px;
+  --flow-label-shift: var(--space-3);
+  --flow-arrow-inset: -25%;
+  --control-size: 40px;
+  --contact-icon-size: 20px;
+  --control-pill-height: 56px;
+  --control-cta-height: 52px;
+  --control-label-optical-shift: 2px;
+  /* Mobile explorer card: the neighbours peek in by this much on each side. */
+  --control-carousel-inset: 40px;
+  --icon-size: 16px;
+  --cursor-size: 42px;
+  --cursor-case-width: 180px;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-normal: 180ms;
+  --duration-medium: 280ms;
+  --duration-slow: 380ms;
+  --duration-flow-shell: 600ms;
+  --duration-flow-travel: 800ms;
+  --scroll-settle-delay: 180ms;
+  --duration-scroll-snap: 900ms;
+  --scroll-snap-attraction: .26;
+  --scroll-lerp: .085;
+  --scroll-wheel-speed: 1;
+  --ease-standard: ease;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-swipe: cubic-bezier(.25, .75, .25, 1);
+  --ease-reveal: cubic-bezier(.22, 1, .36, 1);
+  --ease-flow-shell: cubic-bezier(.23, 1, .32, 1);
+  --ease-flow-arrow: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-flow-fill: cubic-bezier(.19, 1, .22, 1);
+  --duration-reveal: 1100ms;
+  /* Camera move of a rendered phone between two shots — slow, like a dolly. */
+  --duration-camera: 1200ms;
+  /* The phone's screen dissolves old → new while the camera moves, and the next
+     gesture starts before the camera lands, so the move never ends in a pause. */
+  --duration-screen-crossfade: 360ms;
+  --duration-gesture-delay: 840ms;
+  /* Explorer, measured frame by frame on apple.com's product viewer (2026-09-24).
+     Pill ↔ card is a spring (ζ .70, ω 13.3): 4.6% overshoot at ~330ms, rest by ~900ms.
+     The next shot rises on a quicker spring (ζ .65, ω 28) once the old one is half out. */
+  --ease-spring: linear(0, 0.047, 0.16, 0.305, 0.456, 0.599, 0.724, 0.826, 0.906, 0.964, 1.004, 1.028, 1.041, 1.046, 1.045, 1.04, 1.034, 1.027, 1.02, 1.014, 1.009, 1.005, 1.002, 1, 0.999, 0.998, 0.998, 0.998, 0.998, 0.998, 0.999, 0.999, 0.999, 1, 1, 1, 1);
+  --duration-spring: 900ms;
+  --ease-spring-quick: linear(0, 0.122, 0.371, 0.628, 0.833, 0.968, 1.04, 1.066, 1.065, 1.05, 1.032, 1.016, 1.005, 0.999, 0.996, 0.995, 0.996, 0.997, 0.999, 0.999, 1);
+  --duration-spring-quick: 400ms;
+  --ease-exit: cubic-bezier(.5, 0, .75, 0);
+  --duration-exit: 160ms;
+  --duration-crossfade-gap: 105ms;
+  /* Mobile carousel: no bounce — a critically damped spring (ζ 1, ω 17.5), at rest by ~500ms. */
+  --ease-settle: linear(0, 0.072, 0.218, 0.378, 0.522, 0.642, 0.737, 0.81, 0.864, 0.904, 0.932, 0.953, 0.967, 0.977, 0.984, 0.989, 0.993, 0.995, 0.997, 0.998, 1);
+  --duration-settle: 500ms;
+  /* Card text rises in once the card has room; the pill label waits for the card to close. */
+  --duration-card-text: 600ms;
+  --duration-card-text-delay: 250ms;
+  --duration-card-rise: 400ms;
+  --duration-label-return-delay: 350ms;
+  --reveal-card-rise: 28px;
+  --reveal-offset: 20px;
+  --reveal-stagger: 100ms;
+  --parallax-cover-range: 12px;
+  --parallax-cover-scale: 1.06;
+  --project-art-height: 476px;
+  --project-tilt-max-angle: 4;
+  --project-tilt-perspective: 1100px;
+}
+
+:root[data-theme="dark"], .ds-theme-dark {
+  color-scheme: dark;
+  font-variation-settings: "DRKM" 1;
+  --color-text-primary: #fff;
+  --color-text-secondary: #fff;
+  --color-surface-page: #121213;
+  --color-surface-raised: color-mix(in srgb, var(--color-text-primary) 9%, var(--color-surface-page));
+  --color-hairline: color-mix(in srgb, var(--color-text-secondary) 30%, transparent);
+  --color-focus: #96a6ff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+/* The smooth scroller writes scroll position every frame; native smoothing would fight it. */
+html.smooth-scroll-ready { scroll-behavior: auto; }
+body { margin: 0; background: var(--color-surface-page); color: var(--color-text-primary); font-family: var(--font-family-sans); }
+button { font-family: var(--font-family-sans); }
+a { color: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* Type styles */
+.ds-display { margin: 0; font-size: var(--font-size-display); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-tight); }
+.ds-heading-1 { margin: 0; font-size: var(--font-size-case-h1); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-case); line-height: var(--line-height-tight); }
+.ds-heading-2 { margin: 0; font-size: var(--font-size-case-h2); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-case); line-height: var(--line-height-tight); }
+.ds-heading-3 { margin: 0; font-size: var(--font-size-case-h3); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-case); line-height: var(--line-height-heading); }
+.ds-body { margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }
+.ds-label { margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-label); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }
+
+/* Screenshot gallery. Native scrolling is the no-JS and reduced-motion fallback. */
+.ds-screen-gallery { position: relative; }
+.ds-screen-gallery-viewport { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; overscroll-behavior-x: contain; }
+.ds-screen-gallery-viewport::-webkit-scrollbar { display: none; }
+.ds-screen-gallery-viewport:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: calc(-1 * var(--focus-width)); }
+.ds-screen-gallery-track { position: relative; display: flex; width: max-content; min-width: 100%; gap: var(--layout-gallery-gap); padding: var(--space-6) max(var(--space-6), calc((100% - var(--layout-gallery-card-width)) / 2)); }
+.ds-screen-gallery-card { flex: 0 0 var(--layout-gallery-card-width); width: var(--layout-gallery-card-width); margin: 0; scroll-snap-align: center; }
+.ds-screen-gallery-card img { display: block; width: 100%; height: auto; aspect-ratio: var(--layout-gallery-card-ratio); border-radius: var(--radius-media); object-fit: cover; user-select: none; -webkit-user-drag: none; }
+.ds-screen-gallery:not(.is-animated) [data-gallery-clone] { display: none; }
+.ds-screen-gallery.is-animated .ds-screen-gallery-viewport { position: relative; height: var(--layout-gallery-height); overflow: hidden; perspective: var(--layout-gallery-perspective); touch-action: pan-y; user-select: none; cursor: grab; }
+.ds-screen-gallery.is-dragging .ds-screen-gallery-viewport { cursor: grabbing; }
+.ds-screen-gallery.is-animated .ds-screen-gallery-track { position: absolute; top: 50%; left: 50%; display: block; width: 0; min-width: 0; height: 0; padding: 0; transform-style: preserve-3d; will-change: transform; }
+.ds-screen-gallery.is-animated .ds-screen-gallery-card { position: absolute; top: 0; left: 0; transform-origin: 0 0; will-change: opacity; backface-visibility: hidden; }
+.ds-screen-gallery.is-animated::before,
+.ds-screen-gallery.is-animated::after { content: ""; position: absolute; top: 0; z-index: 1; width: var(--layout-gallery-fade-width); height: var(--layout-gallery-height); pointer-events: none; }
+.ds-screen-gallery.is-animated::before { left: 0; background: linear-gradient(to right, var(--color-surface-page), transparent); }
+.ds-screen-gallery.is-animated::after { right: 0; background: linear-gradient(to left, var(--color-surface-page), transparent); }
+
+/* Buttons */
+.ds-button { border: var(--border-width) solid var(--color-text-secondary); background: transparent; color: var(--color-text-primary); font-weight: var(--font-weight-heading); cursor: pointer; transition: border-color var(--duration-normal) var(--ease-standard), color var(--duration-normal) var(--ease-standard), opacity var(--duration-normal) var(--ease-standard), transform var(--duration-fast) var(--ease-standard); }
+.ds-button:hover { border-color: var(--color-text-primary); }
+.ds-button:active { transform: scale(.98); }
+.ds-button:disabled, .ds-button[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+.ds-button--icon { position: relative; display: grid; width: var(--control-size); height: var(--control-size); flex: 0 0 var(--control-size); padding: 0; border-radius: var(--radius-control); place-items: center; }
+.ds-button--pill { display: inline-flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; min-height: var(--control-cta-height); overflow: hidden; padding: 0 var(--space-6); border-radius: var(--radius-pill); font-size: var(--font-size-button); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-button); text-decoration: none; }
+
+/* Flow pill — the arrows slide through the label while a circle of ink grows
+   out of the middle and swallows the button. Everything is one hover state:
+   shell (border, radius, colour) on --duration-flow-shell, the moving parts on
+   --duration-flow-travel. Colours are the page inverted, so dark theme follows
+   by itself. */
+.ds-button--flow { position: relative; gap: var(--space-1); padding-inline: calc(var(--space-8) + var(--space-2)); border-color: var(--color-text-secondary); transition: border-color var(--duration-flow-shell) var(--ease-flow-shell), color var(--duration-flow-shell) var(--ease-flow-shell), border-radius var(--duration-flow-shell) var(--ease-flow-shell), transform var(--duration-fast) var(--ease-standard); }
+.ds-button--flow:hover, .ds-button--flow:focus-visible { border-color: transparent; border-radius: var(--radius-control); color: var(--color-surface-page); }
+.ds-button--flow:active { transform: scale(.95); }
+
+.ds-flow-fill { position: absolute; z-index: 0; top: 50%; left: 50%; width: var(--icon-size); height: var(--icon-size); border-radius: var(--radius-pill); background: var(--color-text-primary); opacity: 0; transform: translate(-50%, -50%); transition: width var(--duration-flow-travel) var(--ease-flow-fill), height var(--duration-flow-travel) var(--ease-flow-fill), opacity var(--duration-flow-travel) var(--ease-flow-fill); pointer-events: none; }
+.ds-button--flow:hover .ds-flow-fill, .ds-button--flow:focus-visible .ds-flow-fill { width: var(--flow-fill-size); height: var(--flow-fill-size); opacity: 1; }
+
+.ds-flow-label { position: relative; z-index: 1; transform: translate(calc(var(--flow-label-shift) * -1), var(--control-label-optical-shift)); transition: transform var(--duration-flow-travel) var(--ease-out); }
+.ds-button--flow:hover .ds-flow-label, .ds-button--flow:focus-visible .ds-flow-label { transform: translate(var(--flow-label-shift), var(--control-label-optical-shift)); }
+
+.ds-flow-arrow { position: absolute; z-index: 1; width: var(--icon-size); height: var(--icon-size); transition: left var(--duration-flow-travel) var(--ease-flow-arrow), right var(--duration-flow-travel) var(--ease-flow-arrow); }
+.ds-flow-arrow--in { left: var(--flow-arrow-inset); }
+.ds-flow-arrow--out { right: var(--space-6); }
+.ds-button--flow:hover .ds-flow-arrow--in, .ds-button--flow:focus-visible .ds-flow-arrow--in { left: var(--space-6); }
+.ds-button--flow:hover .ds-flow-arrow--out, .ds-button--flow:focus-visible .ds-flow-arrow--out { right: var(--flow-arrow-inset); }
+
+/* Animated pill label */
+.swipe-button-label { display: flex; gap: .02em; }
+.swipe-letter { display: inline-block; height: 1em; overflow: hidden; }
+.swipe-letter-track { display: grid; grid-auto-rows: 1em; transition: transform var(--duration-slow) var(--ease-swipe); transition-delay: calc(var(--letter-index) * 18ms); will-change: transform; }
+.swipe-letter--up .swipe-letter-track { transform: translateY(-50%); }
+.swipe-letter--down .swipe-letter-track { transform: translateY(0); }
+.contact:hover .swipe-letter--up .swipe-letter-track, .contact:focus-visible .swipe-letter--up .swipe-letter-track { transform: translateY(0); }
+.contact:hover .swipe-letter--down .swipe-letter-track, .contact:focus-visible .swipe-letter--down .swipe-letter-track { transform: translateY(-50%); }
+
+/* Text links */
+.ds-link { position: relative; color: var(--color-text-secondary); font-size: var(--font-size-label); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); text-decoration: none; transition: color var(--duration-normal) var(--ease-standard); }
+.ds-link::after { position: absolute; right: 0; bottom: -2px; left: 0; height: var(--border-width); background: currentColor; content: ""; transform: scaleX(0); transform-origin: right; transition: transform var(--duration-medium) var(--ease-out); }
+.ds-link:hover, .ds-link:focus-visible { color: var(--color-text-primary); }
+.ds-link:hover::after, .ds-link:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+.ds-link[aria-disabled="true"] { cursor: default; }
+
+/* Contact dialog: a fixed top-layer panel, independent of the page layout. */
+.ds-contact-dialog { width: min(calc(100vw - var(--space-6) * 2), var(--contact-dialog-width)); max-height: calc(100dvh - var(--space-6) * 2); margin: auto; padding: var(--contact-dialog-padding); overflow: auto; border: 0; border-radius: var(--radius-screen); background: var(--color-surface-page); color: var(--color-text-primary); font-family: var(--font-family-sans); }
+.ds-contact-dialog:focus { outline: none; }
+.ds-contact-dialog::backdrop { background: var(--color-modal-backdrop); }
+.ds-contact-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.ds-contact-title { margin: 0; font-size: var(--font-size-body); font-weight: var(--font-weight-heading); line-height: var(--line-height-body); }
+.ds-contact-close { display: grid; width: var(--contact-close-size); height: var(--contact-close-size); flex: none; padding: 0; place-items: center; border: 0; border-radius: var(--radius-pill); background: var(--color-surface-raised); color: var(--color-text-primary); font-size: var(--font-size-button); cursor: pointer; }
+.ds-contact-list { display: grid; gap: var(--space-2); margin-top: var(--space-3); }
+.ds-contact-item { display: grid; width: 100%; grid-template-columns: var(--contact-icon-size) minmax(0, 1fr); align-items: center; gap: var(--space-3); padding: var(--space-1) var(--space-2); border: 0; border-radius: var(--radius-control); background: transparent; color: inherit; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.ds-contact-item:hover, .ds-contact-item:focus-visible { background: var(--color-surface-raised); }
+.ds-contact-icon { width: var(--contact-icon-size); height: var(--contact-icon-size); color: var(--color-contact-muted); }
+.ds-contact-envelope, .ds-contact-check { transform-origin: center; transition: opacity var(--duration-normal) var(--ease-standard), transform var(--duration-normal) var(--ease-out), stroke-dashoffset var(--duration-medium) var(--ease-out); }
+.ds-contact-check { opacity: 0; stroke-dasharray: var(--contact-check-path-length); stroke-dashoffset: var(--contact-check-path-length); transform: scale(var(--contact-icon-shrink)); }
+.ds-contact-item.is-copied .ds-contact-envelope { opacity: 0; transform: scale(var(--contact-icon-shrink)); }
+.ds-contact-item.is-copied .ds-contact-check { opacity: 1; stroke-dashoffset: 0; transform: scale(1); }
+.ds-contact-copy { display: grid; gap: var(--space-1); min-width: 0; }
+.ds-contact-kind { color: var(--color-contact-muted); font-size: var(--font-size-label); line-height: var(--line-height-body); }
+.ds-contact-value { color: var(--color-text-primary); font-size: var(--font-size-body); line-height: var(--line-height-body); overflow-wrap: anywhere; }
+.ds-contact-close:focus-visible, .ds-contact-item:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+
+/* Product trial: primary action, installation guidance and author contacts. */
+.ds-try { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-12) var(--layout-column-gap); }
+.ds-try-copy, .ds-try-details { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+.ds-try-copy > .ds-body, .ds-try-details > .ds-body { max-width: var(--content-body-max-width); }
+.ds-try-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-2); }
+.ds-try-links { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-6); }
+.ds-try-links .ds-link { display: inline-flex; align-items: center; min-inline-size: var(--space-12); min-height: var(--space-12); }
+@media (max-width: 780px) {
+  .ds-try { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Shared states */
+.ds-button:focus-visible, .ds-link:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+
+/* Figure with caption — the case pages need a line under a screenshot,
+   and the system had no place for it. */
+.ds-figure { margin: 0; }
+.ds-figure-caption { margin: var(--space-3) 0 0; max-width: var(--content-body-max-width); color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: var(--line-height-body); }
+
+/* Phone screen — a tall product frame, narrower radius than a wide cover. */
+.ds-screen { display: block; width: 100%; height: auto; border-radius: var(--radius-screen); background: var(--color-project-base); }
+
+/* Media grid — two or three items side by side, one column under 780. */
+.ds-media-grid { display: grid; gap: var(--case-grid-gap); grid-template-columns: repeat(var(--ds-grid-columns, 2), minmax(0, 1fr)); }
+.ds-media-grid--3 { --ds-grid-columns: 3; }
+.ds-media-grid--4 { --ds-grid-columns: 4; }
+
+/* Card — a bordered block for a question, a comparison column, a note. */
+.ds-card { padding: var(--space-6); border: var(--border-width) solid var(--color-text-secondary); border-radius: var(--radius-control); }
+.ds-card > * + * { margin-top: var(--space-3); }
+.ds-card-eyebrow { margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-label); font-weight: var(--font-weight-regular); letter-spacing: .08em; text-transform: uppercase; }
+.ds-card-title { margin: 0; color: var(--color-text-primary); font-size: var(--font-size-body); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-body); }
+
+/* Embed — a live product frame kept at its own width and scaled as a whole,
+   because the thing inside has minimum touch and type sizes of its own. */
+.ds-embed { position: relative; overflow: hidden; width: 100%; border-radius: var(--radius-screen); background: var(--color-project-base); }
+.ds-embed iframe { display: block; width: 375px; height: 812px; border: 0; transform-origin: top left; }
+
+/* Statement — a long line of text that lights up word by word as it scrolls into
+   place. Dim is the secondary text colour, lit is the primary one, so the effect
+   rides the theme instead of hardcoding two greys. */
+.ds-statement-word { color: var(--color-text-secondary); transition: color var(--duration-slow) var(--ease-out); }
+.ds-statement-word.is-lit { color: var(--color-text-primary); }
+.ds-statement-break { display: block; height: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-statement-word { color: var(--color-text-primary); transition: none; }
+  .ds-accordion-panel, .ds-accordion-chevron, .ds-accordion-media video { transition: none; }
+}
+
+/* Accordion — a list where one item is open at a time, paired with media that
+   changes with it. Rows are buttons, so keyboard and screen readers get it for
+   free; the panel opens through grid-template-rows, which animates to content
+   height without measuring it in JS. */
+.ds-accordion { display: grid; gap: var(--layout-column-gap); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+.ds-accordion-item { border-top: var(--border-width) solid var(--color-hairline); }
+.ds-accordion-item:last-child { border-bottom: var(--border-width) solid var(--color-hairline); }
+.ds-accordion-head { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-6) 0; border: 0; background: transparent; color: var(--color-text-primary); font-family: var(--font-family-sans); font-size: var(--font-size-card-title); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-heading); text-align: left; cursor: pointer; }
+.ds-accordion-head:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+.ds-accordion-chevron { flex: 0 0 auto; width: var(--icon-size); height: var(--icon-size); transition: transform var(--duration-medium) var(--ease-out); }
+.ds-accordion-head[aria-expanded="true"] .ds-accordion-chevron { transform: rotate(180deg); }
+.ds-accordion-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--duration-medium) var(--ease-out); }
+.ds-accordion-head[aria-expanded="true"] + .ds-accordion-panel { grid-template-rows: 1fr; }
+.ds-accordion-panel > div { overflow: hidden; }
+.ds-accordion-panel p { margin: 0 0 var(--space-6); color: var(--color-text-secondary); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.ds-accordion-media { position: relative; overflow: hidden; border-radius: var(--radius-media); background: var(--color-project-base); aspect-ratio: 3 / 4; }
+.ds-accordion-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity var(--duration-medium) var(--ease-out); }
+.ds-accordion-media video.is-current { opacity: 1; }
+/* List — the FAQ form of the same rows: one column, text only, and every row opens
+   on its own (data-accordion-multi), because a reader skims it rather than steps
+   through it. Rows sit flush, so the column gap goes. Two classes, so the mobile
+   rule for .ds-accordion cannot put the gap back. */
+.ds-accordion.ds-accordion--list { grid-template-columns: minmax(0, 1fr); gap: 0; }
+/* A question is a row in a list, not a card title: at card-title size eleven questions
+   read as eleven headings of the block's own rank. Weight and colour still set it
+   apart from the answer below. */
+.ds-accordion--list .ds-accordion-head { font-size: var(--font-size-faq-question); }
+/* Media inside an open answer keeps the same bottom air as a paragraph. Only direct
+   children: figures inside a media grid sit in their cells and must not add it twice. */
+.ds-accordion-panel > div > .ds-figure, .ds-accordion-panel > div > .ds-media-grid { margin: 0 0 var(--space-6); }
+
+/* Explorer — the pill form of the accordion, after Apple's "Take a closer look":
+   closed items are pills with a plus, the open one grows into a card, and arrows
+   step through. Same data-accordion wiring and the same one-open rule; the media
+   pane is a single rendered phone (.ds-phone) whose camera moves to the open item.
+   The head collapses away when open, so the card reads as one paragraph with a
+   bold lead, as on apple.com. */
+.ds-explorer { display: grid; overflow: hidden; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; border-radius: var(--radius-media); background: var(--color-surface-explorer); interpolate-size: allow-keywords; }
+.ds-explorer-nav { display: flex; gap: var(--space-6); align-items: center; padding: var(--space-12); }
+/* The explorer is a plate: the phone is cut by its edge, pills sit on the plate colour. */
+.ds-explorer .ds-explorer-item, .ds-explorer .ds-explorer-step { background: var(--color-surface-explorer-control); }
+.ds-explorer-steps { display: grid; gap: var(--space-3); }
+.ds-explorer-step { display: grid; width: var(--control-size); height: var(--control-size); padding: 0; place-items: center; border: 0; border-radius: var(--radius-pill); background: var(--color-surface-raised); color: var(--color-text-primary); cursor: pointer; transition: opacity var(--duration-normal) var(--ease-standard); }
+.ds-explorer-step:disabled { opacity: .35; cursor: default; }
+.ds-explorer-step svg { width: var(--icon-size); height: var(--icon-size); }
+/* Close exists only for the mobile carousel (see the 780px block); desktop has no mode to leave. */
+.ds-explorer-close { display: none; }
+.ds-explorer-list { display: grid; flex: 1 1 auto; min-width: 0; gap: var(--space-3); justify-items: start; margin: 0; padding: 0; list-style: none; container-type: inline-size; }
+/* Label and card text share one cell; the item's own width and height are the morph.
+   Height goes pill → auto (interpolate-size on .ds-explorer), both on one spring.
+   Not grid-template-rows: the spring's overshoot drives fr below zero and it snaps. */
+.ds-explorer-item { display: grid; grid-template-areas: "stack"; overflow: hidden; width: fit-content; max-width: 100%; height: var(--control-pill-height); border-radius: calc(var(--control-pill-height) / 2); background: var(--color-surface-raised); transition: width var(--duration-spring) var(--ease-spring), height var(--duration-spring) var(--ease-spring); }
+/* max-width: none lets the spring overshoot the column for a moment, as on apple.com. */
+.ds-explorer-item:has(> .ds-explorer-head-wrap > [aria-expanded="true"]) { width: min(var(--content-body-max-width), 100%); max-width: none; height: auto; }
+.ds-explorer-head-wrap, .ds-explorer-item > .ds-accordion-panel { grid-area: stack; align-self: start; }
+.ds-explorer-head { display: flex; height: var(--control-pill-height); align-items: center; gap: var(--space-3); padding: 0 var(--space-6) 0 var(--space-4); border: 0; background: transparent; color: var(--color-text-primary); font-size: var(--font-size-button); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); white-space: nowrap; cursor: pointer; transition: opacity var(--duration-slow) var(--ease-standard) var(--duration-label-return-delay); }
+/* The label leaves at once, so the card's text is the only thing reading. */
+.ds-explorer-head[aria-expanded="true"] { opacity: 0; pointer-events: none; transition: opacity var(--duration-fast) var(--ease-standard); }
+.ds-explorer-head:focus-visible, .ds-explorer-step:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+.ds-explorer-plus { width: calc(var(--icon-size) * 1.5); height: calc(var(--icon-size) * 1.5); flex: 0 0 auto; }
+/* contain: the hidden text must not widen a closed pill past its label. */
+.ds-explorer-item > .ds-accordion-panel { display: block; contain: inline-size; }
+/* The text is set at the open card's width from the start: the card clips it while it
+   grows, instead of the text re-wrapping every frame and the height jumping. */
+.ds-explorer-item > .ds-accordion-panel p { box-sizing: border-box; width: min(var(--content-body-max-width), 100cqi); margin: 0; padding: var(--space-6); color: var(--color-text-primary); font-size: var(--font-size-body); line-height: var(--line-height-body);
+  opacity: 0; transform: translateY(var(--reveal-card-rise)); transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-card-rise) var(--ease-standard); }
+.ds-explorer-item:has(> .ds-explorer-head-wrap > [aria-expanded="true"]) > .ds-accordion-panel p { opacity: 1; transform: none; transition: opacity var(--duration-card-text) var(--ease-standard) var(--duration-card-text-delay), transform var(--duration-card-rise) var(--ease-standard); }
+.ds-explorer-item > .ds-accordion-panel strong { font-weight: var(--font-weight-heading); }
+
+/* Phone — a flat rendered handset for a frontal shot: titanium ring, bezel, screen.
+   The camera is one cheap move — translate and scale, nothing else — so the browser
+   composites it instead of recomputing 3D every frame. Everything is in stage units
+   (--u = 1/1080 of the stage width), so the shot scales as one picture.
+   Camera: --s scale · --fx/--fy focus on the 375×812 screen (0–1) · --cx/--cy where
+   that point lands in the stage (0–100). The phone is cut by the stage edge, the way
+   a product is cut by the frame on apple.com; the stage itself has no box. */
+.ds-phone-stage { --u: calc(100cqh / 1080); --s: 2; --fx: .5; --fy: .5; --cx: 50; --cy: 50; --rx: 0; --ry: 0; --rz: 0;
+  position: relative; overflow: hidden; width: 100%; aspect-ratio: 1; container-type: size; }
+/* A slight tilt is allowed (--rx/--ry/--rz, a few degrees): the phone stays one flat layer,
+   the turn happens around the focus point, so the focus still lands on (--cx, --cy). */
+.ds-phone { position: absolute; top: 0; left: 0; width: calc(375 * var(--u)); height: calc(812 * var(--u));
+  transform-origin: calc(var(--fx) * 375 * var(--u)) calc(var(--fy) * 812 * var(--u));
+  transform: translate(calc(var(--cx) * 1cqw - var(--fx) * 375 * var(--u)), calc(var(--cy) * 1cqh - var(--fy) * 812 * var(--u)))
+             perspective(calc(2400 * var(--u))) rotateX(calc(var(--rx) * 1deg)) rotateY(calc(var(--ry) * 1deg)) rotateZ(calc(var(--rz) * 1deg)) scale(var(--s));
+  transition: transform var(--duration-camera) var(--ease-reveal), transform-origin var(--duration-camera) var(--ease-reveal); will-change: transform; }
+/* Корпус — тонкая обводка, как у .ds-device в первых версиях кейса: градиентный «титан»
+   отменён Николаем 2026-09-23. Рамка не красит корпус, а только очерчивает его. */
+.ds-phone-frame { position: absolute; inset: calc(-12 * var(--u)); border: var(--border-width) solid var(--color-hairline); border-radius: calc(59 * var(--u)); }
+.ds-phone-bezel { position: absolute; inset: calc(-8 * var(--u)); border-radius: calc(56 * var(--u)); background: var(--color-device-bezel); }
+.ds-phone-screen { position: absolute; inset: 0; overflow: hidden; border-radius: calc(49 * var(--u)); background: var(--color-project-base); }
+.ds-phone-screen img, .ds-phone-screen video, .ds-phone-screen canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity var(--duration-slow) var(--ease-out); }
+.ds-phone-screen .is-current { opacity: 1; }
+/* Light: a glow of the accent around the focus. */
+.ds-phone-bloom { position: absolute; left: calc(var(--cx) * 1%); top: calc(var(--cy) * 1%); width: 60%; aspect-ratio: 1; background: radial-gradient(closest-side, color-mix(in srgb, var(--color-brand-atlas) 22%, transparent), transparent); mix-blend-mode: screen; transform: translate(-50%, -50%); pointer-events: none; transition: left var(--duration-camera) var(--ease-reveal), top var(--duration-camera) var(--ease-reveal); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-explorer-item, .ds-explorer-step, .ds-explorer-head, .ds-explorer-item > .ds-accordion-panel p, .ds-phone, .ds-phone-bloom, .ds-phone-screen img, .ds-phone-screen video, .ds-phone-screen canvas { transition: none; }
+}
+
+/* Scrolly — a story the scroll drives, after apple.com product pages. The plate sticks
+   for one screen per step; on the left one step of text at a time, on the right the phone,
+   whose camera follows the scroll exactly and rests on a "shelf" at every step, where that
+   step's clip plays. Scrolling back plays it backwards. script.js writes --o (opacity) and
+   --d (distance from the active step) on each step, and the camera onto .ds-phone-stage;
+   each step carries its own shot as custom properties (--s, --fx, --fy, --cx, --cy). */
+.ds-scrolly { --scrolly-steps: 3; position: relative; height: calc(100svh * (var(--scrolly-steps) + .5)); }
+.ds-scrolly-pin { position: sticky; top: var(--space-6); display: grid; overflow: hidden; height: calc(100svh - var(--space-6) * 2); grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); border-radius: var(--radius-media); background: var(--color-surface-stage); }
+.ds-scrolly-copy { position: relative; }
+.ds-scrolly-step { --o: 0; --d: 0; position: absolute; top: 50%; right: var(--space-12); left: var(--space-12); max-width: var(--content-body-max-width); opacity: var(--o); transform: translateY(calc(-50% - var(--d) * var(--space-16))); pointer-events: none; }
+.ds-scrolly-step h3,
+.ds-scrolly-step .ds-scrolly-lead { margin: 0 0 var(--space-4); color: var(--color-text-primary); font-size: var(--font-size-card-title); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-heading); }
+.ds-scrolly-step p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.ds-scrolly-step strong { color: var(--color-text-primary); font-weight: var(--font-weight-heading); }
+.ds-scrolly-media { height: 100%; margin: 0; }
+.ds-scrolly-media .ds-phone-stage { height: 100%; aspect-ratio: auto; }
+/* The scroll drives the camera frame by frame — a transition on top would only lag behind it. */
+.ds-scrolly .ds-phone, .ds-scrolly .ds-phone-bloom { transition: none; }
+
+/* Flow — a scenario as steps in a row, with a loop back from the last step to the
+   first. Steps are an ordered list, so the order is read, not just drawn. The loop
+   hangs under the row from the centre of the first step to the centre of the last,
+   so its inset is half a column: set --ds-flow-steps to the number of steps. */
+.ds-flow { --ds-flow-steps: 5; --ds-flow-gap: var(--space-6); }
+.ds-flow-steps { display: grid; gap: var(--ds-flow-gap); grid-template-columns: repeat(var(--ds-flow-steps), minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.ds-flow-step { position: relative; display: grid; gap: var(--space-1); align-content: start; padding: var(--space-4); border: var(--border-width) solid var(--color-hairline); border-radius: var(--radius-control); }
+.ds-flow-step + .ds-flow-step::before { content: "→" / ""; position: absolute; top: 50%; left: calc(var(--ds-flow-gap) * -1 - var(--border-width)); width: var(--ds-flow-gap); color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: 1; text-align: center; transform: translateY(-50%); }
+.ds-flow-num { color: var(--color-text-secondary); font-size: var(--font-size-label); font-variant-numeric: tabular-nums; line-height: var(--line-height-body); }
+.ds-flow-title { color: var(--color-text-primary); font-size: var(--font-size-body); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-body); }
+.ds-flow-note { color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: var(--line-height-body); }
+.ds-flow-loop { display: flex; height: var(--space-6); margin: 0 calc((100% - (var(--ds-flow-steps) - 1) * var(--ds-flow-gap)) / var(--ds-flow-steps) / 2) var(--space-4); align-items: flex-end; justify-content: center; border: var(--border-width) solid var(--color-hairline); border-top: 0; border-radius: 0 0 var(--radius-control) var(--radius-control); }
+.ds-flow-loop span { padding: 0 var(--space-3); background: var(--color-surface-page); color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: var(--line-height-body); transform: translateY(50%); }
+.ds-flow-loop span::before { content: "← " / ""; }
+
+/* Device — a hairline around the phone with a bezel of page between it and the
+   screen. Bezel, radius and island are shares of a real iPhone brought to the
+   375×812 frame and multiplied by --k, the scale JS gives the embed; without it
+   the bezel would keep its 10px while the phone shrinks. */
+.ds-device { --k: 1; position: relative; width: fit-content; margin-inline: auto; padding: calc(var(--device-bezel) * var(--k)); border: var(--border-width) solid var(--color-hairline); border-radius: calc((var(--device-radius) + var(--device-bezel)) * var(--k)); }
+.ds-device .ds-embed { position: relative; border-radius: calc(var(--device-radius) * var(--k)); }
+.ds-device-island { position: absolute; z-index: 2; top: calc((var(--device-bezel) + var(--device-island-top)) * var(--k)); left: 50%; width: calc(var(--device-island-width) * var(--k)); height: calc(var(--device-island-height) * var(--k)); border-radius: var(--radius-pill); background: #000; transform: translateX(-50%); pointer-events: none; }
+
+/* Status bar — drawn by the site, not by the product: the prototype hides its own
+   as soon as it decides it runs on a phone, and inside this frame it does. */
+.ds-device-status { position: absolute; z-index: 2; top: calc((var(--device-bezel) + var(--device-status-top)) * var(--k)); right: calc((var(--device-bezel) + var(--device-status-inset)) * var(--k)); left: calc((var(--device-bezel) + var(--device-status-inset)) * var(--k)); display: flex; align-items: center; justify-content: space-between; color: #fff; font-family: var(--font-family-sans); font-size: calc(14px * var(--k)); font-weight: 600; letter-spacing: -.01em; line-height: 1; pointer-events: none; }
+.ds-device-status svg { display: block; height: calc(12px * var(--k)); width: auto; }
+.ds-device-status-right { display: flex; align-items: center; gap: calc(5px * var(--k)); }
+
+@media (max-width: 780px) {
+  :root {
+    /* Переопределяются ступени, а не роли: роль остаётся ссылкой. */
+    --text-2xl: clamp(28px, 8.5vw, 34px);
+    --text-3xl: clamp(34px, 11vw, 46px);
+    --text-4xl: clamp(46px, 13.5vw, 58px);
+    --text-5xl: clamp(44px, 14vw, 60px);
+    --case-topbar-gap: var(--space-16);
+    --case-media-gap: var(--space-12);
+    --case-section-gap: var(--space-24);
+    --case-mechanics-height: 1324px;
+    --case-mechanics-inset: 16px;
+    --case-one-copy-zone: 44svh;
+    --layout-gallery-card-width: clamp(150px, 45vw, 200px);
+    --layout-gallery-height: 440px;
+    --layout-gallery-perspective: 900px;
+    --project-stack-gap: var(--space-12);
+    --radius-media: 22px;
+    --radius-screen: 18px;
+  }
+
+  .ds-media-grid { grid-template-columns: minmax(0, 1fr); }
+  .ds-accordion { grid-template-columns: minmax(0, 1fr); gap: var(--space-12); }
+  .ds-accordion-media { order: -1; }
+  /* Mobile explorer, after apple.com: the media fills the plate and the controls sit on
+     its lower edge. Two states. At rest — a row of pills that scrolls sideways. A tap
+     turns it into a carousel (.is-touring, set by script.js): every item becomes a card
+     of one width, the open one centred and tall, the neighbours peeking in at the edges.
+     The list slides by --explorer-index; --explorer-drag follows the finger. */
+  .ds-explorer { position: relative; grid-template-columns: minmax(0, 1fr); grid-template-areas: "stage"; align-items: end; }
+  .ds-explorer-media { grid-area: stage; }
+  .ds-explorer-nav { position: relative; z-index: 1; display: block; grid-area: stage; overflow-x: auto; padding: var(--space-6) 0; container-type: inline-size; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .ds-explorer-nav::-webkit-scrollbar { display: none; }
+  .ds-explorer-list { display: flex; width: max-content; align-items: end; padding-inline-end: var(--layout-mobile-gutter); container-type: normal;
+    transform: translateX(var(--layout-mobile-gutter)); transition: transform var(--duration-settle) var(--ease-settle); }
+  .ds-explorer-item { flex: none; transition: width var(--duration-settle) var(--ease-settle), height var(--duration-settle) var(--ease-settle); }
+  /* Rest: every item is a pill, the open one included — nothing reads as a card yet. */
+  .ds-explorer:not(.is-touring) .ds-explorer-item { width: fit-content; max-width: none; height: var(--control-pill-height); }
+  .ds-explorer:not(.is-touring) .ds-explorer-head { opacity: 1; pointer-events: auto; }
+  .ds-explorer:not(.is-touring) .ds-explorer-item > .ds-accordion-panel p { opacity: 0; transform: translateY(var(--reveal-card-rise)); }
+  /* Carousel. */
+  .ds-explorer.is-touring .ds-explorer-nav { overflow-x: hidden; }
+  .ds-explorer.is-touring .ds-explorer-list { touch-action: pan-y;
+    transform: translateX(calc(var(--control-carousel-inset) - var(--explorer-index, 0) * (100cqi - 2 * var(--control-carousel-inset) + var(--space-3)) + var(--explorer-drag, 0px))); }
+  .ds-explorer.is-touring .ds-explorer-list.is-dragging { transition: none; }
+  .ds-explorer.is-touring .ds-explorer-item { width: calc(100cqi - 2 * var(--control-carousel-inset)); max-width: none; }
+  .ds-explorer.is-touring .ds-explorer-item > .ds-accordion-panel p { width: calc(100cqi - 2 * var(--control-carousel-inset)); }
+  /* Arrows sit in the side margins, level with the pill strip; the chevrons turn sideways. */
+  /* Как на apple.com: стрелки — кружки высотой с пилюлю, наполовину за краем экрана
+     (рамка обрезает по .ds-explorer), по центру ряда пилюль. */
+  .ds-explorer-steps { position: absolute; z-index: 1; right: calc(var(--control-pill-height) / -2 + var(--space-2)); bottom: var(--space-6); left: calc(var(--control-pill-height) / -2 + var(--space-2)); display: flex; justify-content: space-between; pointer-events: none; }
+  .ds-explorer-step { width: var(--control-pill-height); height: var(--control-pill-height); }
+  .ds-explorer-step svg { transform: rotate(-90deg); }
+  /* Hidden at rest; visibility waits for the fade so a leaving control stays drawn. */
+  .ds-explorer-step, .ds-explorer-close { visibility: hidden; opacity: 0; transition: opacity var(--duration-settle) var(--ease-settle), transform var(--duration-settle) var(--ease-settle), visibility 0s linear var(--duration-settle); }
+  .ds-explorer.is-touring .ds-explorer-step, .ds-explorer.is-touring .ds-explorer-close { visibility: visible; opacity: 1; pointer-events: auto; transition-delay: 0s; }
+  .ds-explorer.is-touring .ds-explorer-step:disabled { opacity: .35; }
+  .ds-explorer-close { position: absolute; z-index: 2; top: var(--space-4); right: var(--space-4); display: grid; width: var(--control-size); height: var(--control-size); padding: 0; place-items: center; border: 0; border-radius: var(--radius-pill); background: var(--color-surface-explorer-control); color: var(--color-text-primary); cursor: pointer; transform: scale(.4); }
+  .ds-explorer.is-touring .ds-explorer-close { transform: none; }
+  .ds-explorer-close svg { width: var(--icon-size); height: var(--icon-size); }
+  .ds-explorer-close:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
+  .ds-scrolly-pin { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 3fr) minmax(0, 2fr); }
+  .ds-scrolly-media { order: -1; }
+  .ds-scrolly-step { top: var(--space-6); right: var(--space-6); left: var(--space-6); transform: translateY(calc(var(--d) * var(--space-8) * -1)); }
+  /* Flow stands up: steps in a column, arrows point down, and the loop turns into a
+     line under the last step that points back up. */
+  .ds-flow-steps { grid-template-columns: minmax(0, 1fr); }
+  .ds-flow-step + .ds-flow-step::before { content: "↓" / ""; top: calc(var(--ds-flow-gap) * -1 - var(--border-width)); left: 0; width: 100%; height: var(--ds-flow-gap); display: flex; align-items: center; justify-content: center; transform: none; }
+  .ds-flow-loop { height: auto; margin: var(--space-3) 0 0; justify-content: flex-start; border: 0; }
+  .ds-flow-loop span { padding: 0; transform: none; }
+  .ds-flow-loop span::before { content: "↑ " / ""; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body { transition: background-color var(--duration-medium) var(--ease-standard), color var(--duration-medium) var(--ease-standard); }
+  .ds-button--pill:hover { opacity: .62; }
+  .ds-button--flow:hover { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ds-button, .ds-link, .ds-link::after, .swipe-letter-track, .pb-dot, .pb-card, .pb-card::after, .ds-contact-envelope, .ds-contact-check { transition: none; }
+  .ds-flow-fill, .ds-flow-label, .ds-flow-arrow { transition: none; }
+  /* No travel without motion: the label and the arrows stay put, only the fill
+     and the colour flip, so hover still reads as a state change. */
+  .ds-flow-label, .ds-button--flow:hover .ds-flow-label, .ds-button--flow:focus-visible .ds-flow-label { transform: translate(calc(var(--flow-label-shift) * -1), var(--control-label-optical-shift)); }
+  .ds-button--flow:hover .ds-flow-arrow--in, .ds-button--flow:focus-visible .ds-flow-arrow--in { left: var(--flow-arrow-inset); }
+  .ds-button--flow:hover .ds-flow-arrow--out, .ds-button--flow:focus-visible .ds-flow-arrow--out { right: var(--space-6); }
+  /* Sits after the 780px block, whose explorer transitions would otherwise win. */
+  .ds-explorer-list, .ds-explorer-item, .ds-explorer-step, .ds-explorer-close { transition: none; }
+  .contact:hover .swipe-letter--up .swipe-letter-track, .contact:focus-visible .swipe-letter--up .swipe-letter-track { transform: translateY(-50%); }
+  .contact:hover .swipe-letter--down .swipe-letter-track, .contact:focus-visible .swipe-letter--down .swipe-letter-track { transform: translateY(0); }
+}

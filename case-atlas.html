@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ATLAS: a music time machine that throws you into the sound of a place and an era. A product design case study by Nikolai Myshkin." />
+    <title>ATLAS · Nikolai Myshkin</title>
+    <link rel="stylesheet" href="design-system.css?v=20261031-3" />
+    <link rel="stylesheet" href="styles.css?v=20261031-3" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three/three.module.min.js",
+          "three/addons/": "./vendor/three/addons/"
+        }
+      }
+    </script>
+    <script src="script.js?v=20261031-3" defer></script>
+    <script src="screen-gallery.js?v=20261031-3" defer></script>
+    <script type="module" src="tools/atlas-phone-motion.js?v=20261031-3"></script>
+  </head>
+  <body class="case-detail-body" data-case-reveal>
+    <main class="case-detail" id="top">
+      <header class="case-detail-topbar">
+        <a class="ds-link case-back" href="index.html">← Back</a>
+      </header>
+
+      <section class="case-hero">
+        <div class="case-detail-copy case-hero-copy">
+          <h1><span class="case-hero-brand">Atlas.</span><br />Music Time Machine.</h1>
+          <p>Spin to a city, pick a decade, and hear its music.</p>
+          <p class="case-actions">
+            <a class="ds-button ds-button--pill ds-button--flow" href="atlas-app/index.html" target="_blank" rel="noopener"><svg class="ds-flow-arrow ds-flow-arrow--in" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg><span class="ds-flow-label">Open Prototype</span><span class="ds-flow-fill" aria-hidden="true"></span><svg class="ds-flow-arrow ds-flow-arrow--out" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </p>
+        </div>
+        <figure class="ds-figure case-hero-media">
+          <div class="ds-device">
+            <div class="ds-embed" data-embed>
+              <iframe src="atlas-app/index.html?inset=44&amp;inset-bottom=8&amp;v=20261031-3" title="ATLAS prototype" allow="autoplay"></iframe>
+              <button class="case-embed-shield" type="button" data-embed-unlock aria-label="Tap to try the prototype"><span>Tap to try</span></button>
+            </div>
+            <div class="ds-device-status" aria-hidden="true">
+              <span data-device-clock>9:41</span>
+              <span class="ds-device-status-right">
+                <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8.5" width="3" height="3.5" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 4.2a10 10 0 0 1 14 0"/><path d="M3.6 7a6.4 6.4 0 0 1 8.8 0"/><path d="M6.2 9.7a2.7 2.7 0 0 1 3.6 0"/></svg>
+                <svg viewBox="0 0 26 12" fill="none"><rect x=".6" y=".6" width="21" height="10.8" rx="3.2" stroke="currentColor" stroke-opacity=".45" stroke-width="1.1"/><rect x="2.2" y="2.2" width="14" height="7.6" rx="2" fill="currentColor"/><path d="M23.4 4.2v3.6a2.3 2.3 0 0 0 0-3.6z" fill="currentColor" fill-opacity=".45"/></svg>
+              </span>
+            </div>
+            <span class="ds-device-island" aria-hidden="true"></span>
+          </div>
+          <button class="case-embed-lock" type="button" data-embed-lock>Scroll page</button>
+        </figure>
+      </section>
+
+      <section class="case-pitch-explorer case-moves-section" aria-labelledby="phone-moves-title">
+        <h2 class="ds-heading-2" id="phone-moves-title">Explore by place, time, or chance.</h2>
+        <div class="ds-explorer case-pitch-explorer-stage" data-accordion data-accordion-explorer data-accordion-empty data-phone-screen="live" data-phone-film data-phone-transparent data-phone-fit-mobile data-phone-demo data-current="">
+          <div class="ds-explorer-nav">
+            <div class="ds-explorer-steps">
+              <button class="ds-explorer-step" type="button" data-accordion-step="-1" aria-label="Previous">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6" /></svg>
+              </button>
+              <button class="ds-explorer-step" type="button" data-accordion-step="1" aria-label="Next">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+              </button>
+            </div>
+
+            <ul class="ds-explorer-list">
+              <li class="ds-explorer-item">
+                <div class="ds-explorer-head-wrap">
+                  <button class="ds-explorer-head" type="button" aria-expanded="false" aria-controls="moves-globe" data-accordion-head="globe">
+                    <svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10" /><path d="M12 7.5v9M7.5 12h9" /></svg>
+                    Spin the planet
+                  </button>
+                </div>
+                <div class="ds-accordion-panel" id="moves-globe" tabindex="-1"><div><p><strong>Spin the globe.</strong> Let go to land on the nearest city and hear its music.</p></div></div>
+              </li>
+              <li class="ds-explorer-item">
+                <div class="ds-explorer-head-wrap">
+                  <button class="ds-explorer-head" type="button" aria-expanded="false" aria-controls="moves-dial" data-accordion-head="dial">
+                    <svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10" /><path d="M12 7.5v9M7.5 12h9" /></svg>
+                    Ten decades
+                  </button>
+                </div>
+                <div class="ds-accordion-panel" id="moves-dial" tabindex="-1"><div><p><strong>Turn the year dial.</strong> Move between decades to hear how the music changes.</p></div></div>
+              </li>
+              <li class="ds-explorer-item">
+                <div class="ds-explorer-head-wrap">
+                  <button class="ds-explorer-head" type="button" aria-expanded="false" aria-controls="moves-throw" data-accordion-head="throw">
+                    <svg class="ds-explorer-plus" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10" /><path d="M12 7.5v9M7.5 12h9" /></svg>
+                    A place &amp; era
+                  </button>
+                </div>
+                <div class="ds-accordion-panel" id="moves-throw" tabindex="-1"><div><p><strong>Tap the dice.</strong> Jump to a random place and era in one move.</p></div></div>
+              </li>
+            </ul>
+          </div>
+
+          <figure class="ds-figure ds-explorer-media case-pitch-explorer-media">
+            <canvas class="case-pitch-explorer-shot is-current" width="1254" height="1254" role="img" aria-label="A dark titanium 3D phone demonstrating ATLAS gestures"></canvas>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-screen-ribbon" aria-labelledby="atlas-gallery-title">
+        <h2 class="sr-only" id="atlas-gallery-title">More of Atlas</h2>
+        <div class="ds-screen-gallery" data-screen-gallery>
+          <div class="ds-screen-gallery-viewport" tabindex="0" role="group" aria-label="Atlas app screenshots">
+            <div class="ds-screen-gallery-track">
+              <figure class="ds-screen-gallery-card"><img src="atlas/01-main.webp" width="750" height="1624" loading="lazy" decoding="async" draggable="false" alt="Atlas globe and decade dial, showing music from Detroit in the 1960s" /></figure>
+              <figure class="ds-screen-gallery-card"><img src="atlas/08-track.webp" width="750" height="1624" loading="lazy" decoding="async" draggable="false" alt="Full player with Fela Kuti album artwork, playback controls and artist details" /></figure>
+              <figure class="ds-screen-gallery-card"><img src="atlas/07-liked.webp" width="750" height="1624" loading="lazy" decoding="async" draggable="false" alt="Liked tracks collected from different places and decades" /></figure>
+              <figure class="ds-screen-gallery-card"><img src="atlas/09-stats.webp" width="750" height="1624" loading="lazy" decoding="async" draggable="false" alt="Listening stats with genres, a favourite decade and most explored places" /></figure>
+              <figure class="ds-screen-gallery-card"><img src="atlas/10-profile.webp" width="750" height="1624" loading="lazy" decoding="async" draggable="false" alt="Profile settings for playback, haptics and content display" /></figure>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="case-detail-copy case-detail-copy--section" aria-labelledby="atlas-faq-title">
+        <h2 id="atlas-faq-title">The thinking behind ATLAS.</h2>
+        <div class="case-faq ds-accordion ds-accordion--list" data-accordion data-accordion-multi>
+          <div class="ds-accordion-item">
+            <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="atlas-faq-1" data-accordion-head="faq-1">What actually works?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="ds-accordion-panel" id="atlas-faq-1"><div><p>The live prototype lets you spin the globe, change decades, hear music previews and save discoveries during the session. There is no backend or full-track streaming.</p></div></div>
+          </div>
+          <div class="ds-accordion-item">
+            <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="atlas-faq-2" data-accordion-head="faq-2">How was ATLAS built?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="ds-accordion-panel" id="atlas-faq-2"><div><p>I set the product direction, designed the interactions and tested the result. Claude Code and Codex helped write the code. The browser prototype uses HTML, CSS and JavaScript, with a three.js globe and a local demo profile.</p></div></div>
+          </div>
+          <div class="ds-accordion-item">
+            <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="atlas-faq-3" data-accordion-head="faq-3">What has been validated?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="ds-accordion-panel" id="atlas-faq-3"><div><p>The catalogue and playback paths were checked, including empty place × decade combinations. How people use ATLAS and whether they return still need user testing.</p></div></div>
+          </div>
+          <div class="ds-accordion-item">
+            <button class="ds-accordion-head" type="button" aria-expanded="false" aria-controls="atlas-faq-4" data-accordion-head="faq-4">What would it take to launch?<svg class="ds-accordion-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="ds-accordion-panel" id="atlas-faq-4"><div><p>Full tracks need music rights, and accounts need a backend. One possible route is to build the discovery experience inside a streaming service that already licenses its catalogue.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-detail-copy case-detail-copy--section case-contact" id="contact" aria-labelledby="case-contact-title">
+        <h2 id="case-contact-title">Let’s build something great.</h2>
+        <p class="case-cta"><button class="ds-button ds-button--pill ds-button--flow" type="button" data-contact-open><svg class="ds-flow-arrow ds-flow-arrow--in" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg><span class="ds-flow-label">Get in touch</span><span class="ds-flow-fill" aria-hidden="true"></span><svg class="ds-flow-arrow ds-flow-arrow--out" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></p>
+        <p class="case-return"><a class="ds-link case-back" href="index.html">← Back</a></p>
+      </section>
+    </main>
+    <dialog class="ds-contact-dialog ds-theme-dark" data-contact-dialog aria-labelledby="contact-title" tabindex="-1">
+      <div class="ds-contact-header">
+        <h2 class="ds-contact-title" id="contact-title">Contact</h2>
+        <button class="ds-contact-close" type="button" data-contact-close aria-label="Close contacts">×</button>
+      </div>
+      <div class="ds-contact-list">
+        <button class="ds-contact-item" type="button" data-copy-email aria-label="Copy email address holadosli@gmail.com">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g class="ds-contact-envelope"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></g><path class="ds-contact-check" d="m4 12 5 5L20 6"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">Email</span><span class="ds-contact-value">holadosli@gmail.com</span></span>
+        </button>
+        <span class="sr-only" data-copy-status aria-live="polite"></span>
+        <a class="ds-contact-item" href="https://t.me/nicol_ds" target="_blank" rel="noopener">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3 3 10l6.5 3.2L12 20l9-17Z"></path><path d="M9.5 13.2 21 3"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">Telegram</span><span class="ds-contact-value">@nicol_ds</span></span>
+        </a>
+        <a class="ds-contact-item" href="https://www.linkedin.com/in/nikolai-myshkin/" target="_blank" rel="noopener">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="3"></rect><path d="M7 10v7M7 7v.1M11 17v-7M11 13a3 3 0 0 1 6 0v4"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">LinkedIn</span><span class="ds-contact-value">Nikolai Myshkin</span></span>
+        </a>
+        <a class="ds-contact-item" href="nikolai-myshkin-cv.pdf" target="_blank" rel="noopener">
+          <svg class="ds-contact-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"></path><path d="M14 2v5h4M8 12h7M8 16h7"></path></svg>
+          <span class="ds-contact-copy"><span class="ds-contact-kind">CV</span><span class="ds-contact-value">Open PDF</span></span>
+        </a>
+      </div>
+    </dialog>
+  </body>
+</html>
