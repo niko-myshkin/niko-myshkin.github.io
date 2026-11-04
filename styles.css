@@ -1,14 +1,14 @@
 .layout { display: grid; grid-template-columns: var(--layout-columns); gap: var(--layout-column-gap); width: 100%; max-width: var(--layout-max-width); min-height: 100vh; margin: 0 auto; padding: 0 var(--layout-page-gutter); }
 .profile { position: sticky; top: 0; display: flex; height: 100vh; flex-direction: column; padding: var(--space-8) 0 var(--space-8); }
 .profile-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-6); }
-.profile-identity { position: relative; min-width: 0; padding-top: var(--avatar-height); }
+.profile-identity { position: relative; width: max-content; min-width: 0; padding-top: var(--avatar-height); }
 .monogram { position: relative; display: block; width: var(--avatar-width); height: var(--avatar-height); overflow: hidden; -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 42%, #000 36%, #000c 54%, transparent 78%); mask-image: radial-gradient(ellipse 72% 68% at 50% 42%, #000 36%, #000c 54%, transparent 78%); text-decoration: none; }
 .avatar { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; pointer-events: none; }
 .monogram--halo { -webkit-mask-image: none; mask-image: none; }
 .monogram--halo .avatar { object-fit: contain; }
 .profile-identity .monogram { position: absolute; top: 0; left: 50%; translate: -50% 0; }
 .profile-name, .project-meta h2 { max-width: var(--content-heading-max-width); font-size: var(--font-size-card-title); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-heading); }
-.profile-name { margin: var(--space-4) 0 0; color: var(--color-text-secondary); font-size: var(--font-size-profile-name); line-height: var(--line-height-button); }
+.profile-name { width: max-content; margin: var(--space-4) 0 0; color: var(--color-text-secondary); font-size: var(--font-size-profile-name); line-height: var(--line-height-button); }
 .profile-copy { margin-top: var(--space-20); }
 h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-text-primary); font-size: var(--font-size-display); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-tight); }
 .intro { max-width: var(--content-intro-max-width); margin: 0; color: var(--color-text-secondary); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }

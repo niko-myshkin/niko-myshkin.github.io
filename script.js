@@ -66,6 +66,18 @@ const precisePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
 const projects = [...document.querySelectorAll(".project")];
 
+const profileIdentity = document.querySelector(".profile-identity");
+const profileName = profileIdentity?.querySelector(".profile-name");
+if (profileIdentity && profileName) {
+  const syncProfileLockup = () => {
+    const width = Math.ceil(profileName.getBoundingClientRect().width);
+    profileIdentity.style.setProperty("--avatar-width", `${width}px`);
+    profileIdentity.style.setProperty("--avatar-height", `${width}px`);
+  };
+  syncProfileLockup();
+  if ("ResizeObserver" in window) new ResizeObserver(syncProfileLockup).observe(profileName);
+}
+
 /* Smooth scroll.
    The page keeps its real scroll position — we only decide how fast it gets there,
    so position: sticky, the scrollbar and anchors all keep working.

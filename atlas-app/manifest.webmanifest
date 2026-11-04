@@ -1,6 +1,6 @@
 {
-  "name": "ATLAS — Music Time Machine",
-  "short_name": "ATLAS",
+  "name": "Atlas · Music Time Machine",
+  "short_name": "Atlas",
   "description": "A globe and a year dial drop you into the music of a place and an era.",
   "start_url": "./",
   "scope": "./",
