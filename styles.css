@@ -466,3 +466,40 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
   .case-pitch-gestures .ds-scrolly { --rest-s: 1.12; --rest-fy: .5; --rest-cy: 44; }
   .case-pitch-gestures .ds-scrolly-step { --s: 1.12; --fy: .5; --cy: 44; }
 }
+
+
+/* CV (cv.html). One reading column in the DOM for ATS; section labels sit in a narrow left track.
+   Printed to PDF by tools/build-cv.sh; print step sizes live in design-system.css. */
+.cv { max-width: var(--layout-cv-max-width); margin: 0 auto; padding: var(--space-16) var(--layout-page-gutter); color: var(--color-text-primary); font-variant-ligatures: no-common-ligatures; }
+.cv a { color: inherit; text-decoration-line: underline; text-decoration-color: var(--color-text-secondary); text-decoration-thickness: var(--border-width); text-underline-offset: var(--border-link-underline-offset); }
+.cv-contacts a, .cv-links a { white-space: nowrap; }
+.cv-head { margin-bottom: var(--space-8); }
+.cv .cv-name { max-width: none; margin: 0; font-size: var(--font-size-cv-name); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-heading); }
+.cv-head p { margin: 0; }
+.cv-head .cv-role { margin-top: var(--space-2); font-size: var(--font-size-cv-role); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }
+.cv-head .cv-contacts { margin-top: var(--space-2); color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: var(--line-height-body); }
+.cv-section { display: grid; grid-template-columns: var(--layout-cv-label-width) minmax(0, 1fr); gap: var(--space-6); margin-top: var(--space-4); padding-top: var(--space-4); border-top: var(--border-width) solid var(--color-hairline); }
+.cv-label { margin: 0; color: var(--color-text-primary); font-size: var(--font-size-body); font-weight: var(--font-weight-heading); line-height: var(--line-height-body); }
+.cv-body p { margin: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cv-body p + p { margin-top: var(--space-1); }
+.cv-body b { font-weight: var(--font-weight-heading); }
+.cv-item + .cv-item { margin-top: var(--space-3); }
+.cv-item-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); }
+.cv-item-title { margin: 0; font-size: var(--font-size-body); font-weight: var(--font-weight-heading); line-height: var(--line-height-body); }
+.cv-body .cv-meta { flex: none; color: var(--color-text-secondary); font-size: var(--font-size-label); }
+.cv-body .cv-links { color: var(--color-text-secondary); font-size: var(--font-size-label); }
+
+@media (max-width: 780px) {
+  .cv { padding: var(--space-8) var(--layout-mobile-gutter); }
+  .cv-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+  .cv-item-head { flex-direction: column; gap: 0; }
+}
+
+@media print {
+  @page { size: A4; margin: var(--layout-cv-print-margin); }
+  .cv { max-width: none; padding: 0; }
+  .cv-head { margin-bottom: var(--space-4); }
+  .cv-section { grid-template-columns: var(--layout-cv-label-width) minmax(0, 1fr); gap: var(--space-4); margin-top: var(--space-3); padding-top: var(--space-3); }
+  .cv-item-head { flex-direction: row; gap: var(--space-4); }
+  .cv-item, .cv-item-head { break-inside: avoid; }
+}

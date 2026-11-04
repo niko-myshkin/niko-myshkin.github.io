@@ -57,6 +57,8 @@
   --font-size-case-h2: var(--text-3xl);
   --font-size-display: var(--text-4xl);
   --font-size-case-h1: var(--text-5xl);
+  --font-size-cv-name: var(--text-2xl);
+  --font-size-cv-role: var(--text-lg);
   --line-height-tight: 1.02;
   --line-height-heading: 1.06;
   --line-height-body: 1.45;
@@ -86,6 +88,9 @@
   --layout-card-min: 200px;
   --content-heading-max-width: 430px;
   --content-intro-max-width: 300px;
+  --layout-cv-max-width: 760px;
+  --layout-cv-label-width: 132px;
+  --layout-cv-print-margin: 11mm 15mm;
   --content-body-max-width: 420px;
   --contact-dialog-width: 328px;
   --contact-dialog-padding: 20px;
@@ -142,6 +147,7 @@
 
   /* Shape and border */
   --border-width: 1px;
+  --border-link-underline-offset: .2em;
   --focus-width: 2px;
   --radius-control: 10px;
   --radius-media: 32px;
@@ -161,7 +167,7 @@
   --contact-icon-size: 20px;
   --control-pill-height: 56px;
   --control-cta-height: 52px;
-  --control-label-optical-shift: 2px;
+  --control-label-optical-shift: 1px;
   /* Mobile explorer card: the neighbours peek in by this much on each side. */
   --control-carousel-inset: 40px;
   --icon-size: 16px;
@@ -620,4 +626,15 @@ a { color: inherit; }
   .ds-explorer-list, .ds-explorer-item, .ds-explorer-step, .ds-explorer-close { transition: none; }
   .contact:hover .swipe-letter--up .swipe-letter-track, .contact:focus-visible .swipe-letter--up .swipe-letter-track { transform: translateY(-50%); }
   .contact:hover .swipe-letter--down .swipe-letter-track, .contact:focus-visible .swipe-letter--down .swipe-letter-track { transform: translateY(0); }
+}
+
+/* Print (the CV PDF). Same rule as mobile: override steps, never roles. */
+@media print {
+  :root {
+    --color-surface-page: #fff;
+    --text-sm: 12px;
+    --text-md: 14px;
+    --text-lg: 15px;
+    --text-2xl: 32px;
+  }
 }
