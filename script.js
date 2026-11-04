@@ -4,7 +4,7 @@ document.querySelectorAll('.profile-footer-link[aria-disabled="true"]').forEach(
 
 const contactDialog = document.querySelector("[data-contact-dialog]");
 if (contactDialog) {
-  const contactCursor = document.querySelector(".case-cursor");
+  const contactCursor = document.querySelector(".site-cursor");
   const emailButton = contactDialog.querySelector("[data-copy-email]");
   const copyStatus = contactDialog.querySelector("[data-copy-status]");
   let copyResetTimer;
@@ -161,59 +161,14 @@ const smoothLoop = (now) => {
 
 if (!projects.length) requestAnimationFrame(smoothLoop);
 
-const caseCursor = document.querySelector(".case-cursor");
-
 if (projects.length) {
   const scrollSettleDelay = parseFloat(rootStyles.getPropertyValue("--scroll-settle-delay")) || 180;
   const scrollSnapDuration = parseFloat(rootStyles.getPropertyValue("--duration-scroll-snap")) || 900;
   const scrollSnapAttraction = parseFloat(rootStyles.getPropertyValue("--scroll-snap-attraction")) || 0.26;
   const projectTiltMaxAngle = parseFloat(rootStyles.getPropertyValue("--project-tilt-max-angle")) || 4;
-  let cursorX = -100;
-  let cursorY = -100;
-  let cursorTargetX = -100;
-  let cursorTargetY = -100;
-
-  const moveCaseCursor = (event) => {
-    if (!caseCursor || !precisePointer.matches) return;
-    cursorTargetX = event.clientX;
-    cursorTargetY = event.clientY;
-    if (!caseCursor.classList.contains("is-visible")) {
-      cursorX = cursorTargetX;
-      cursorY = cursorTargetY;
-      caseCursor.style.setProperty("--cursor-x", `${cursorX}px`);
-      caseCursor.style.setProperty("--cursor-y", `${cursorY}px`);
-    }
-    caseCursor.classList.add("is-visible");
-  };
-
-  const renderCaseCursor = () => {
-    if (!caseCursor || !precisePointer.matches) return;
-    const cursorSmoothing = reducedMotion.matches ? 1 : 0.42;
-    cursorX += (cursorTargetX - cursorX) * cursorSmoothing;
-    cursorY += (cursorTargetY - cursorY) * cursorSmoothing;
-    caseCursor.style.setProperty("--cursor-x", `${cursorX}px`);
-    caseCursor.style.setProperty("--cursor-y", `${cursorY}px`);
-  };
-
-  const syncCursorMode = () => {
-    const isEnabled = Boolean(caseCursor && precisePointer.matches);
-    document.documentElement.classList.toggle("custom-cursor-ready", isEnabled);
-    if (!isEnabled) caseCursor?.classList.remove("is-visible", "is-case");
-  };
-
-  const hideCaseCursor = () => caseCursor?.classList.remove("is-visible", "is-case");
-  const expandCaseCursor = () => caseCursor?.classList.add("is-case");
-  const collapseCaseCursor = () => caseCursor?.classList.remove("is-case");
-
-  syncCursorMode();
-  precisePointer.addEventListener("change", syncCursorMode);
-  document.addEventListener("pointermove", moveCaseCursor);
-  document.documentElement.addEventListener("pointerleave", hideCaseCursor);
-
   const openProject = (project) => {
     const caseUrl = project.dataset.caseUrl;
     if (!caseUrl) return;
-    collapseCaseCursor();
     const destination = new URL(caseUrl, window.location.href);
     if (destination.origin !== window.location.origin) {
       window.open(destination.href, "_blank", "noopener,noreferrer");
@@ -238,10 +193,6 @@ if (projects.length) {
         }
       });
     }
-    art?.addEventListener("pointerenter", () => {
-      if (hasCase) expandCaseCursor();
-    });
-    art?.addEventListener("pointerleave", collapseCaseCursor);
     if (art?.classList.contains("project-art--image")) {
       art.addEventListener("pointermove", (event) => {
         if (!precisePointer.matches || reducedMotion.matches || event.pointerType === "touch") return;
@@ -358,7 +309,6 @@ if (projects.length) {
 
   const animate = (now) => {
     renderSmoothScroll(now);
-    renderCaseCursor();
     renderCoverParallax();
     requestAnimationFrame(animate);
   };

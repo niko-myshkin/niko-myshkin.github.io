@@ -32,17 +32,14 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
 .project-meta p { margin: 0; }
 .project-meta h2 { margin: 0 0 var(--space-3); }
 .project-meta p:last-child { max-width: var(--content-body-max-width); color: var(--color-text-secondary); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); line-height: var(--line-height-body); }
-.case-cursor { position: fixed; top: 0; left: 0; z-index: 1000; display: none; width: var(--cursor-size); height: var(--cursor-size); align-items: center; justify-content: center; overflow: hidden; border: var(--border-width) solid var(--color-cursor-ink); border-radius: var(--radius-pill); background: transparent; color: var(--color-cursor-ink); font-family: var(--font-family-sans); font-size: var(--font-size-button); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-button); mix-blend-mode: difference; opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); transition: width var(--duration-medium) var(--ease-out), height var(--duration-medium) var(--ease-out), opacity var(--duration-fast) var(--ease-standard); white-space: nowrap; }
-.ds-contact-dialog .case-cursor { mix-blend-mode: normal; }
-.case-cursor span { opacity: 0; transform: translateY(var(--space-1)); transition: opacity 100ms var(--ease-standard), transform 160ms var(--ease-standard); }
-.case-cursor.is-visible { opacity: 1; }
-.case-cursor.is-case { width: var(--cursor-case-width); height: var(--control-cta-height); }
-.case-cursor.is-case span { opacity: 1; transform: translateY(var(--control-label-optical-shift)); transition-delay: 70ms; }
-
 .project--lavender .project-art { background: var(--color-project-base); }
 .project--paper .project-art { background: var(--gradient-project-paper); }
 .project--ink .project-art { background: var(--gradient-project-ink); }
 :root[data-theme="dark"] .project-art:not(.project-art--image) { filter: saturate(.88) brightness(.78); }
+.project-art--scout { background: var(--color-surface-explorer); }
+.project-scout-lockup { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+.project-scout-name { color: var(--color-text-primary); font-size: var(--font-size-display); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-tight); }
+.project-scout-status { padding: var(--space-2) var(--space-4); border: var(--border-width) solid var(--color-hairline); border-radius: var(--radius-pill); color: var(--color-text-secondary); font-size: var(--font-size-label); line-height: var(--line-height-button); }
 
 .case-detail { display: grid; width: 100%; max-width: var(--layout-max-width); min-height: 100vh; margin: 0 auto; padding: var(--space-8) var(--layout-page-gutter) var(--space-30); grid-template-columns: minmax(0, 1fr); }
 .case-detail-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--case-topbar-gap); }
@@ -254,16 +251,10 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
   .ds-doc-media { border-radius: var(--radius-media); }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .case-cursor { display: flex; }
-  html.custom-cursor-ready,
-  html.custom-cursor-ready body,
-  html.custom-cursor-ready body * { cursor: none !important; }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .project-art { transition: background-color var(--duration-medium) var(--ease-standard), filter var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-out); }
   .project-art:hover:not(.project-art--image) { transform: scale(.985); }
+  .project--static .project-art:hover { transform: none; }
 
   /* Reveal on scroll. Hidden states apply only once JS has added .reveal-ready,
      so the list stays readable if the script never runs. */
@@ -291,7 +282,6 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .case-cursor, .case-cursor span { transition: none; }
   .avatar { transition: none; }
 }
 
