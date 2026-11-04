@@ -117,6 +117,9 @@
   --case-mechanics-inset: 24px;
   --case-phone-width: min(360px, calc((100svh - 260px) * 0.4618));
   --case-screen-column: var(--case-phone-width);
+  /* Телефон в хиро: от всей высоты окна минус поля страницы сверху и снизу и рамка
+     устройства. Строка Back на десктопе стоит поверх хиро, места не отнимает. */
+  --case-hero-phone-width: min(360px, calc((100svh - 2 * var(--space-8) - 2 * var(--device-bezel)) * 0.4618));
   --case-screen-offset: var(--space-20);
   /* One object (case-atlas.html): одна липкая сцена на первый экран и три жеста. Шаг — сколько
      прокрутки занимает одна поза телефона; зона текста — полоса под телефоном на мобильной. */

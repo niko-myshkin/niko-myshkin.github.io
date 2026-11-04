@@ -111,6 +111,13 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
    220px — топбар, его отступ и поля страницы. svh, потому что на телефоне
    адресная строка съедает часть vh. */
 .case-hero-media .ds-embed { max-width: var(--case-phone-width); margin-inline: auto; }
+/* Десктоп: строка Back не отнимает высоту у хиро, телефон растёт на весь экран.
+   Поля у текста симметричные: центровка сохраняется, а до Back всегда есть зазор. */
+@media (min-width: 781px) {
+  .case-hero { --case-phone-width: var(--case-hero-phone-width); }
+  .case-detail-topbar:has(+ .case-hero) { position: absolute; }
+  .case-hero-copy { padding-block: var(--space-16); }
+}
 
 .case-hero-brand { color: var(--color-brand-atlas); }
 
