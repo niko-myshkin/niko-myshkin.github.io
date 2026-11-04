@@ -251,7 +251,7 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
 @media (prefers-reduced-motion: no-preference) {
   .project-art { transition: background-color var(--duration-medium) var(--ease-standard), filter var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-out); }
   .project-art:hover:not(.project-art--image) { transform: scale(.985); }
-  .project--static .project-art:hover { transform: none; }
+  .project--static .project-art:hover:not(.project-art--image) { transform: none; }
 
   /* Reveal on scroll. Hidden states apply only once JS has added .reveal-ready,
      so the list stays readable if the script never runs. */
@@ -272,6 +272,12 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
   .reveal-ready .profile :focus-within,
   .reveal-ready .profile :focus,
   .reveal-ready .project:focus-within { animation: none; opacity: 1; transform: none; }
+  /* An entrance plays once. Without this, the :focus rule above removes the animation
+     while a button is focused, and blurring it (opening the contact dialog) re-applies
+     it, so the whole column fades out and rises again. JS adds .is-entered on animationend. */
+  .reveal-ready .profile .is-entered,
+  .reveal-ready .project.is-revealed.is-entered,
+  .reveal-ready .project.is-revealed .is-entered { animation: none; opacity: 1; transform: none; }
 
 
   /* Cover drifts against the scroll. The scale hides the edges the shift exposes. */
@@ -295,6 +301,7 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
     animation: case-enter var(--duration-reveal) var(--ease-reveal) var(--case-reveal-delay) both;
   }
   .case-reveal:focus-within { opacity: 1; transform: none; animation: none; }
+  .case-reveal.is-entered { opacity: 1; transform: none; animation: none; }
   @keyframes case-enter {
     from { opacity: 0; transform: translate3d(0, var(--reveal-offset), 0); }
     to { opacity: 1; transform: none; }

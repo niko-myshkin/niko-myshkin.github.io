@@ -66,6 +66,13 @@ const precisePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
 const projects = [...document.querySelectorAll(".project")];
 
+/* Entrance animations play once: mark finished ones so a focus change can't replay them (see styles.css). */
+document.addEventListener("animationend", (event) => {
+  if (event.animationName !== "case-enter" && event.animationName !== "feed-enter") return;
+  if (event.target.closest(".case-pitch-gestures")) return; // those steps replay on purpose
+  event.target.classList.add("is-entered");
+});
+
 const profileIdentity = document.querySelector(".profile-identity");
 const profileName = profileIdentity?.querySelector(".profile-name");
 if (profileIdentity && profileName) {
@@ -154,10 +161,11 @@ window.addEventListener("resize", () => { smoothTarget = clampScroll(smoothTarge
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", (event) => {
     const id = anchor.getAttribute("href").slice(1);
-    const destination = id ? document.getElementById(id) : null;
-    if (!smoothActive || !destination) return;
+    // "#top" is the page top (the HTML spec meaning), not an element further down.
+    const destination = id && id !== "top" ? document.getElementById(id) : null;
+    if (!smoothActive || (!destination && id !== "top")) return;
     event.preventDefault();
-    scrollToPosition(destination.getBoundingClientRect().top + window.scrollY);
+    scrollToPosition(destination ? destination.getBoundingClientRect().top + window.scrollY : 0);
   });
 });
 
@@ -177,7 +185,8 @@ if (projects.length) {
     const caseUrl = project.dataset.caseUrl;
     if (!caseUrl) return;
     const destination = new URL(caseUrl, window.location.href);
-    if (destination.origin !== window.location.origin) {
+    // Separate products (Refkit lives on this same domain) open in a new tab, like other external links.
+    if (project.dataset.caseTarget === "_blank" || destination.origin !== window.location.origin) {
       window.open(destination.href, "_blank", "noopener,noreferrer");
       return;
     }
