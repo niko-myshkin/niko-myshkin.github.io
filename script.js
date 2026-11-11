@@ -85,6 +85,18 @@ if (profileIdentity && profileName) {
   if ("ResizeObserver" in window) new ResizeObserver(syncProfileLockup).observe(profileName);
 }
 
+/* Sticky profile taller than the screen (short laptop windows): stick by its bottom edge,
+   so the column first scrolls with the page until "Get in touch" is visible, then stays. */
+const profile = document.querySelector(".profile");
+if (profile) {
+  const syncProfileTop = () => {
+    profile.style.setProperty("--profile-sticky-top", `${Math.min(0, window.innerHeight - profile.offsetHeight)}px`);
+  };
+  syncProfileTop();
+  window.addEventListener("resize", syncProfileTop);
+  if ("ResizeObserver" in window) new ResizeObserver(syncProfileTop).observe(profile);
+}
+
 /* Smooth scroll.
    The page keeps its real scroll position — we only decide how fast it gets there,
    so position: sticky, the scrollbar and anchors all keep working.

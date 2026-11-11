@@ -1,5 +1,5 @@
 .layout { display: grid; grid-template-columns: var(--layout-columns); gap: var(--layout-column-gap); width: 100%; max-width: var(--layout-max-width); min-height: 100vh; margin: 0 auto; padding: 0 var(--layout-page-gutter); }
-.profile { position: sticky; top: 0; display: flex; height: 100vh; flex-direction: column; padding: var(--space-8) 0 var(--space-8); }
+.profile { position: sticky; top: var(--profile-sticky-top, 0px); align-self: start; display: flex; min-height: 100vh; flex-direction: column; padding: var(--space-8) 0 var(--space-8); }
 .profile-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-6); }
 .profile-identity { position: relative; width: max-content; min-width: 0; padding-top: var(--avatar-height); }
 .monogram { position: relative; display: block; width: var(--avatar-width); height: var(--avatar-height); overflow: hidden; -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 42%, #000 36%, #000c 54%, transparent 78%); mask-image: radial-gradient(ellipse 72% 68% at 50% 42%, #000 36%, #000c 54%, transparent 78%); text-decoration: none; }
@@ -15,6 +15,14 @@ h1 { max-width: var(--content-heading-max-width); margin: 0; color: var(--color-
 .profile-copy .intro { margin-top: var(--space-4); }
 .contact { margin-top: var(--space-12); }
 .profile-footer { width: 100%; margin-top: auto; padding-top: var(--space-8); }
+/* Low desktop screens (e.g. 1366x768 laptops with browser chrome): tighter gaps keep
+   "Get in touch" on the first screen. If it still does not fit, script.js sets
+   --profile-sticky-top so the column scrolls until its bottom is visible. */
+@media (min-width: 781px) and (max-height: 720px) {
+  .profile { padding-block: var(--space-6); }
+  .profile-copy { margin-top: var(--space-8); }
+  .contact { margin-top: var(--space-6); }
+}
 .profile-footer-links { display: grid; width: 100%; grid-template-columns: repeat(6, max-content); justify-content: space-between; }
 
 .work { min-width: 0; padding: var(--space-8) 0 var(--feed-end-space, var(--space-8)); } /* --feed-end-space: script.js, just enough for the last card to settle at the top */
