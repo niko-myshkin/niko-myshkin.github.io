@@ -223,6 +223,58 @@ if (projects.length) {
         art.style.removeProperty("--project-tilt-y");
       });
     }
+    // Motion cover: the reel loads on the first hover (not with the page), plays from the start
+    // and fades in once it really plays; on leave it fades out and stops. Touch and reduced
+    // motion keep the photo. Its bar follows the loop and drags to scrub.
+    const reel = art?.querySelector(".project-cover-motion");
+    const bar = art?.querySelector(".project-reel");
+    if (reel && bar) {
+      let hovering = false, scrubbing = false, frame = 0;
+      const track = () => {
+        if (reel.duration) bar.style.setProperty("--reel-progress", (reel.currentTime / reel.duration).toFixed(4));
+        frame = hovering ? requestAnimationFrame(track) : 0;
+      };
+      const leave = () => {
+        hovering = false;
+        art.classList.remove("is-playing");
+        // stop once it has faded (a timer, not transitionend: that one can go missing)
+        const fade = parseFloat(getComputedStyle(reel).transitionDuration) * 1000 || 0;
+        setTimeout(() => { if (!hovering) reel.pause(); }, fade);
+      };
+      art.addEventListener("pointerenter", (event) => {
+        if (!precisePointer.matches || reducedMotion.matches || event.pointerType === "touch") return;
+        hovering = true;
+        if (!reel.src) reel.src = reel.dataset.src;
+        reel.currentTime = 0;
+        bar.style.setProperty("--reel-progress", 0);
+        if (!frame) track();
+        reel.play().then(() => { if (hovering) art.classList.add("is-playing"); else reel.pause(); }).catch(() => {});
+      });
+      art.addEventListener("pointerleave", () => { if (!scrubbing) leave(); });
+      const seek = (event) => {
+        const rect = bar.getBoundingClientRect();
+        const at = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+        if (reel.duration) reel.currentTime = at * reel.duration;
+      };
+      bar.addEventListener("pointerdown", (event) => {
+        event.stopPropagation();
+        scrubbing = true;
+        bar.classList.add("is-scrubbing");
+        bar.setPointerCapture(event.pointerId);
+        reel.pause();
+        seek(event);
+      });
+      bar.addEventListener("pointermove", (event) => { if (scrubbing) seek(event); });
+      const release = () => {
+        if (!scrubbing) return;
+        scrubbing = false;
+        bar.classList.remove("is-scrubbing");
+        if (art.matches(":hover")) reel.play().catch(() => {}); else leave();
+      };
+      bar.addEventListener("pointerup", release);
+      bar.addEventListener("pointercancel", release);
+      bar.addEventListener("click", (event) => event.stopPropagation());   // the bar scrubs, it does not open the case
+    }
   });
 
   const supportsReveal = "IntersectionObserver" in window;

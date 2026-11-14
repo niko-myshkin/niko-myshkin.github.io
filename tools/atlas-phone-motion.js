@@ -48,6 +48,9 @@ const SCENES = {
     camera: { position: [0, 0, 23.9], target: [0.61, 0, 0] }
   }
 };
+// A page can retune poses for its own frame (the 4:5 post video) before this module runs:
+// window.__PHONE_POSES = { intro: { scale: … }, … }. The case sets none.
+for (const [id, pose] of Object.entries(window.__PHONE_POSES ?? {})) Object.assign(SCENES[id], pose);
 
 // data-phone-transparent: the phone stands on the page itself, in either theme, the way the
 // hero's phone always did. Without it the lab keeps its black studio.

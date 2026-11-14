@@ -30,6 +30,9 @@
   /* Rendered phone (.ds-phone): titanium frame, glass edge, black bezel. */
   --color-device-bezel: #030303;
   --color-device-shell: #1b1b1d;
+  /* marks drawn over video (the reel bar on a motion cover): white in both themes */
+  --color-on-media: #fff;
+  --color-on-media-track: color-mix(in srgb, var(--color-on-media) 28%, transparent);
   --gradient-project-ink: linear-gradient(136deg, #13151c 0%, #263660 28%, #5c4d80 56%, #ad7788 78%, #d1ad99 100%);
 
   /* Typography */
@@ -228,6 +231,12 @@
   --project-art-height: 476px;
   --project-tilt-max-angle: 4;
   --project-tilt-perspective: 1100px;
+  /* the reel bar of a motion cover: a hairline that thickens under the pointer, with a
+     finger-tall hit area, inset so it clears the card's corners */
+  --project-reel-bar: 3px;
+  --project-reel-bar-active: 5px;
+  --project-reel-hit: var(--space-6);
+  --project-reel-inset: var(--space-6);
 }
 
 :root[data-theme="dark"], .ds-theme-dark {
