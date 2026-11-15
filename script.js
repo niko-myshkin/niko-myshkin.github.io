@@ -85,6 +85,21 @@ if (profileIdentity && profileName) {
   if ("ResizeObserver" in window) new ResizeObserver(syncProfileLockup).observe(profileName);
 }
 
+/* Profile column taller than a short laptop window: it sticks by its bottom edge, so it
+   first scrolls with the page until "Get in touch" is visible, then stays while the feed
+   moves. (2026-11-11 this was dropped for "pure CSS" and the column just scrolled away
+   below 680px of height: the two-column idea broke on exactly those laptops.)
+   Without JS the column sticks by its top, as on a tall screen. */
+const profile = document.querySelector(".profile");
+if (profile) {
+  const syncProfileTop = () => {
+    profile.style.setProperty("--profile-sticky-top", `${Math.min(0, window.innerHeight - profile.offsetHeight)}px`);
+  };
+  syncProfileTop();
+  window.addEventListener("resize", syncProfileTop);
+  if ("ResizeObserver" in window) new ResizeObserver(syncProfileTop).observe(profile);
+}
+
 /* Smooth scroll.
    The page keeps its real scroll position — we only decide how fast it gets there,
    so position: sticky, the scrollbar and anchors all keep working.
